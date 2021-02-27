@@ -6,7 +6,7 @@ import Signup from '../components/registrations/Signup'
 import NoMatch from '../components/NoMatch'
 import PlaylistsContainer from './PlaylistsContainer'
 import Logout from '../components/Logout'
-import './App.css';
+import '../App.css';
 
 class App extends Component {
   
