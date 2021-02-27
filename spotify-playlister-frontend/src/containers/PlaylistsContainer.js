@@ -10,26 +10,29 @@ class PlaylistsContainer extends Component {
     })
     .then( () => {
         this.props.updateLoginInfo({ isLoggedIn: false, user: {} })
-        setTimeout(()=>{ this.props.history.push('/') }, 1000);
     })
     .catch(error => console.log(error))
   }
 
   componentDidMount() {
-      this.props.fetchLoginInfo()
-      .then( () => this.props.loginInfo.isLoggedIn ? null : this.redirect() )
+    this.props.fetchLoginInfo()
   }
 
-  redirect = () => this.props.history.push('/') 
+  handleLoading = () => this.props.loginInfo.loading ? this.tempPage() : this.authUser();
+  authUser = () => this.props.loginInfo.isLoggedIn ? this.loadPage() : this.redirect();
+  redirect = () => this.props.history.push('/')
+  tempPage = () => <div></div>
 
-  render() {
+  loadPage = () => {
     return (
       <div>
-          <Link to='/logout' onClick={this.handleClick}>Log Out</Link>
+        <Link to='/' onClick={this.handleClick}>Log Out</Link>
         {this.props.loginInfo.user.id}
       </div>
     );
   }
+
+  render () { return <div>{ this.handleLoading() }</div> }
 };
   
 export default PlaylistsContainer;

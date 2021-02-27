@@ -11,11 +11,14 @@ export default rootReducer;
 
 // TODO: MODIFY REDUCERS
 
-function loginInfoReducer(state = { isLoggedIn: false, user: {} }, action) {
+function loginInfoReducer(state = { isLoggedIn: false, user: {}, loading: true }, action) {
     
     switch (action.type) {
+        case "LOADING_LOGIN_INFO":
+            return { ...state, loading: true }
+        
         case "UPDATE_LOGIN_INFO":
-            return action.loginInfo
+            return { ...action.loginInfo, loading: false }
 
         default:
             return state
