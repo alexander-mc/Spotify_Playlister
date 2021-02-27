@@ -1,13 +1,5 @@
 import React from 'react';
 
-const Logout = () => {
-
-    return (
-        <div>
-            Logging out...
-        </div>
-    );
-
-}
+const Logout = () =>  <div>Logging out...</div>
 
 export default Logout

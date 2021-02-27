@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-class Home extends Component {
+class Index extends Component {
 
   componentDidMount() {
-    this.props.getLoginStatus()
-    .then( () => this.props.loggedInStatus ? this.redirect() : null )
+    this.props.fetchLoginInfo()
+    .then( () => this.props.loginInfo.isLoggedIn ? this.redirect() : null )
   }
 
-  redirect = () => this.props.history.push(`/users/${this.props.user.id}/playlists`)
+  redirect = () => this.props.history.push(`/users/${this.props.loginInfo.user.id}/playlists`)
 
   render () {
     return (
@@ -21,4 +21,4 @@ class Home extends Component {
   }
 };
 
-export default Home;
+export default Index;

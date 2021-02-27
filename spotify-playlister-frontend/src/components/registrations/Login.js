@@ -11,49 +11,40 @@ class Login extends Component {
 
     handleChange = (event) => {
         const {name, value} = event.target
-        this.setState({
-            [name]: value
-        })
+        this.setState({ [name]: value })
     };
 
     handleSubmit = (event) => {
         event.preventDefault()
 
         const confObj = {
-            user: {
-                username: this.state.username,
-                password: this.state.password
-            }
+            user: { username: this.state.username, password: this.state.password }
         }
 
         fetch('http://localhost:3001/login', {
             method: 'POST',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-            },
+            headers: { 'Content-type': 'application/json; charset=UTF-8' },
             credentials: 'include',
             body: JSON.stringify(confObj)
         })
         .then(response => response.json())
         .then( json => {
             if (json.logged_in) {
-              this.props.handleLogin(json)
+              this.props.updateLoginInfo({ isLoggedIn: true, user: json.user })
               this.redirect()
             } else {
-              this.setState({
-                errors: json.errors
-              })
+              this.setState({ errors: json.errors })
             }
         })
-        .catch(error => console.log('api errors:', error))
+        .catch(error => console.log('API errors:', error))
     }
     
     componentDidMount() {
-        this.props.getLoginStatus()
-        .then( () => this.props.loggedInStatus ? this.redirect() : null )
+        this.props.fetchLoginInfo()
+        .then( () => this.props.loginInfo.isLoggedIn ? this.redirect() : null )
     }
 
-    redirect = () => this.props.history.push(`/users/${this.props.user.id}/playlists`) // window.location.href = `/users/${user_id}/playlists`
+    redirect = () => this.props.history.push(`/users/${this.props.loginInfo.user.id}/playlists`) // window.location.href = `/users/${user_id}/playlists`
 
     handleErrors = () => {
         return (

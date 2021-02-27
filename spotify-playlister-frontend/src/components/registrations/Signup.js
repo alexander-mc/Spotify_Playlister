@@ -12,9 +12,7 @@ class Signup extends Component {
 
     handleChange = (event) => {
         const {name, value} = event.target
-        this.setState({
-        [name]: value
-        })
+        this.setState({ [name]: value })
     };
 
     handleSubmit = (event) => {
@@ -30,21 +28,17 @@ class Signup extends Component {
 
         fetch('http://localhost:3001/users', {
             method: 'POST',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8'
-            },
+            headers: { 'Content-type': 'application/json; charset=UTF-8' },
             credentials: 'include',
             body: JSON.stringify(confObj)
         })
         .then(response => response.json())
         .then (json => {
             if (json.status === 'created') {
-              this.props.handleLogin(json)
+              this.props.updateLoginInfo({ isLoggedIn: true, user: json.user })
               this.redirect()
             } else {
-              this.setState({
-                errors: json.errors
-              })
+              this.setState({ errors: json.errors })
             }
         })
         .catch(error => console.log('API errors:', error))
@@ -52,11 +46,11 @@ class Signup extends Component {
     };
 
     componentDidMount() {
-        this.props.getLoginStatus()
-        .then( () => this.props.loggedInStatus ? this.redirect() : null )
+        this.props.fetchLoginInfo()
+        .then( () => this.props.loginInfo.isLoggedIn ? this.redirect() : null )
     }
 
-    redirect = () => this.props.history.push(`/users/${this.props.user.id}/playlists`) // window.location.href = `/users/${user_id}/playlists`
+    redirect = () => this.props.history.push(`/users/${this.props.loginInfo.user.id}/playlists`) // window.location.href = `/users/${user_id}/playlists`
 
     handleErrors = () => {
         return (
