@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Holding from '../Holding'
 
 class Login extends Component {
 
@@ -40,6 +41,7 @@ class Login extends Component {
     }
     
     componentDidMount() {
+        // debugger
         this.props.fetchLoginInfo()
     }
 
@@ -47,7 +49,7 @@ class Login extends Component {
     authUser = () => this.props.loginInfo.isLoggedIn ? this.redirect() : this.loadPage();
     redirect = () => this.props.history.push(`/users/${this.props.loginInfo.user.id}/playlists`);
     
-    tempPage = () => <div></div>
+    tempPage = () => <Holding />
     loadPage = () => {
         return (
             <div>

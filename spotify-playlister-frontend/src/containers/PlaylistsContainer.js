@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import Holding from '../components/Holding'
 
 class PlaylistsContainer extends Component {
 
@@ -9,24 +9,42 @@ class PlaylistsContainer extends Component {
         credentials: 'include'
     })
     .then( () => {
-        this.props.updateLoginInfo({ isLoggedIn: false, user: {} })
+      this.props.updateLoginInfo({ isLoggedIn: false, user: {} })
     })
     .catch(error => console.log(error))
   }
 
   componentDidMount() {
+    // debugger
     this.props.fetchLoginInfo()
   }
 
-  handleLoading = () => this.props.loginInfo.loading ? this.tempPage() : this.authUser();
-  authUser = () => this.props.loginInfo.isLoggedIn ? this.loadPage() : this.redirect();
-  redirect = () => this.props.history.push('/')
-  tempPage = () => <div></div>
+  handleLoading = () => {
+    if (this.props.loginInfo.loading) {
+      return this.tempPage()
+    }  else {
+      return this.authUser()
+    }
+  }
+
+  authUser = () => {
+    if (this.props.loginInfo.isLoggedIn) {
+      return this.loadPage()
+    } else {
+      return this.redirect()
+    }
+  }
+
+  redirect = () => {
+    this.props.history.push('/')
+  }
+
+  tempPage = () => <Holding />
 
   loadPage = () => {
     return (
       <div>
-        <Link to='/' onClick={this.handleClick}>Log Out</Link>
+        <button onClick={this.handleClick}>Log Out</button>
         {this.props.loginInfo.user.id}
       </div>
     );

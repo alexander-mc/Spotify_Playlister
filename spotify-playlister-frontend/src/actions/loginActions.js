@@ -16,18 +16,3 @@ export const fetchLoginInfo = () => {
         })
     }
 }
-
-// fetchLoginInfo = () => {
-//     return (
-//       fetch('http://localhost:3001/logged_in', {
-//         credentials: 'include' // could also use 'same-origin'
-//       })
-//       .then(response => response.json())
-//       .then(json => {
-//         json.logged_in ?
-//         this.props.updateLoginInfo({ isLoggedIn: true, user: json.user }) :
-//         this.props.updateLoginInfo({ isLoggedIn: false, user: {} })
-//       })
-//       .catch(error => console.log('API error:', error))
-//     )
-//   }

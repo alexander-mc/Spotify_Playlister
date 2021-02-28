@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Holding from '../Holding'
 
 class Index extends Component {
 
   componentDidMount() {
+    // debugger
     this.props.fetchLoginInfo()
   }
 
@@ -11,7 +13,7 @@ class Index extends Component {
   authUser = () => this.props.loginInfo.isLoggedIn ? this.redirect() : this.loadPage();
   redirect = () => this.props.history.push(`/users/${this.props.loginInfo.user.id}/playlists`); // window.location.href = `/users/${user_id}/playlists`
   
-  tempPage = () => <div></div>
+  tempPage = () => <Holding />
   loadPage = () => {
     return (
       <div>
