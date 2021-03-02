@@ -17252,3 +17252,117 @@ Processing by SessionsController#is_logged_in? as */*
 Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 950)
 
 
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:09 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 964)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:11 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 949)
+
+
+Started POST "/login" for ::1 at 2021-03-02 00:52:15 -0800
+Processing by SessionsController#create as */*
+  Parameters: {"user"=>{"username"=>"test3", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"username"=>"test3", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (lower("username") = 'test3') ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/models/user.rb:20:in `block in <class:User>'
+Completed 200 OK in 230ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1183)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:17 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 1.4ms | Allocations: 1428)
+
+
+Started DELETE "/logout" for ::1 at 2021-03-02 00:52:17 -0800
+Processing by SessionsController#destroy as */*
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 266)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:17 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 946)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:18 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 947)
+
+
+Started POST "/users" for ::1 at 2021-03-02 00:52:26 -0800
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"were", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "were"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["username", "were"], ["password_digest", "$2a$12$uZLz9XQooTtEw6q3/y2Yl.oUhgoPU4RjcVe0rR66G5TFtpURPY.0C"], ["created_at", "2021-03-02 08:52:26.887860"], ["updated_at", "2021-03-02 08:52:26.887860"]]
+  ↳ app/controllers/users_controller.rb:11:in `create'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:11:in `create'
+Completed 200 OK in 235ms (Views: 0.2ms | ActiveRecord: 3.2ms | Allocations: 4305)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:28 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 13ms (Views: 1.2ms | ActiveRecord: 2.2ms | Allocations: 1412)
+
+
+Started DELETE "/logout" for ::1 at 2021-03-02 00:52:31 -0800
+Processing by SessionsController#destroy as */*
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 261)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:32 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 949)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:36 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 949)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:53 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 949)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:54 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 947)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-02 00:52:58 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 951)
+
+

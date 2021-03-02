@@ -5,12 +5,12 @@ import NavBar from '../components/NavBar'
 class PlaylistsContainer extends Component {
 
   componentDidMount() {
-    debugger
-    this.props.fetchLoginInfo()
+    // debugger
+    this.props.fetchUserInfo()
   }
 
   handleLoading = () => {
-    if (this.props.loginInfo.loading) {
+    if (this.props.userInfo.loading) {
       return this.tempPage()
     }  else {
       return this.authUser()
@@ -20,7 +20,7 @@ class PlaylistsContainer extends Component {
   authUser = () => {
     // Check user has logged in + :user_id matches logged in user id
     // If :user_id does not match logged in user id, force correct user id in url and redirect PlaylistContainer
-    const isValidUser = this.props.loginInfo.user.id === parseInt(this.props.match.params.user_id,10)
+    const isValidUser = this.props.userInfo.user.id === parseInt(this.props.match.params.user_id,10)
     if (isValidUser) {
       return this.loadPage()
     } else {
@@ -37,7 +37,7 @@ class PlaylistsContainer extends Component {
   loadPage = () => {
     return (
       <div>
-        <NavBar loginInfo={this.props.loginInfo} updateLoginInfo={this.props.updateLoginInfo} />
+        <NavBar userInfo={this.props.userInfo} updateUserInfo={this.props.updateUserInfo} />
       </div>
     );
   }

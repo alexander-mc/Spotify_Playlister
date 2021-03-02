@@ -2,7 +2,7 @@ import { combineReducers } from "redux"
 import {v4 as uuid} from "uuid"; 
 
 const rootReducer = combineReducers({
-    loginInfo: loginInfoReducer,
+    userInfo: userInfoReducer,
     playlists: playlistsReducer,
     songs: songsReducer
 })
@@ -11,14 +11,14 @@ export default rootReducer;
 
 // TODO: MODIFY REDUCERS
 
-function loginInfoReducer(state = { isLoggedIn: false, user: {}, loading: true }, action) {
+function userInfoReducer(state = { isLoggedIn: false, user: {}, loading: true }, action) {
     
     switch (action.type) {
-        case "LOADING_LOGIN_INFO":
+        case "LOADING_USER_INFO":
             return { ...state, loading: true }
         
-        case "UPDATE_LOGIN_INFO":
-            return { ...action.loginInfo, loading: false }
+        case "UPDATE_USER_INFO":
+            return { ...action.userInfo, loading: false }
 
         default:
             return state

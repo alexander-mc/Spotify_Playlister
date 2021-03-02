@@ -7,13 +7,13 @@ import Home from '../components/registrations/Home'
 import Login from '../components/registrations/Login'
 import Signup from '../components/registrations/Signup'
 import NoMatch from '../components/NoMatch'
-import { updateLoginInfo, fetchLoginInfo } from '../actions/loginActions'
+import { updateUserInfo, fetchUserInfo } from '../actions/userInfoActions'
 import './App.css';
 
 class App extends Component {
 
   render() {
-    const {loginInfo, updateLoginInfo, fetchLoginInfo} = this.props
+    const {userInfo, updateUserInfo, fetchUserInfo} = this.props
 
     return (
       <div>
@@ -22,22 +22,22 @@ class App extends Component {
             <Route
               exact path='/' 
               render={props => (
-              <Home {...props} fetchLoginInfo={fetchLoginInfo} loginInfo={loginInfo} /> )}
+              <Home {...props} fetchUserInfo={fetchUserInfo} userInfo={userInfo} /> )}
             />
             <Route 
               exact path='/login'
               render={props => (
-              <Login {...props} fetchLoginInfo={fetchLoginInfo} loginInfo={loginInfo} updateLoginInfo={updateLoginInfo} /> )}
+              <Login {...props} fetchUserInfo={fetchUserInfo} userInfo={userInfo} updateUserInfo={updateUserInfo} /> )}
             />
             <Route 
               exact path='/signup' 
               render={props => (
-              <Signup {...props} fetchLoginInfo={fetchLoginInfo} loginInfo={loginInfo} updateLoginInfo={updateLoginInfo} /> )}
+              <Signup {...props} fetchUserInfo={fetchUserInfo} userInfo={userInfo} updateUserInfo={updateUserInfo} /> )}
             />
             <Route
               exact path='/users/:user_id/playlists'
               render={props => (
-              <PlaylistsContainer {...props} fetchLoginInfo={fetchLoginInfo} loginInfo={loginInfo} updateLoginInfo={updateLoginInfo} /> )}
+              <PlaylistsContainer {...props} fetchUserInfo={fetchUserInfo} userInfo={userInfo} updateUserInfo={updateUserInfo} /> )}
             />
             <Route path='*' render={() => <NoMatch /> }/>
           </Switch>
@@ -47,9 +47,9 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = ({loginInfo}) => ({loginInfo})
+// const mapStateToProps = ({userInfo}) => ({userInfo})
 // const mapDispatchToProps = dispatch => ({
-//   updateLoginInfo: loginInfo => dispatch({ type: "UPDATE_LOGIN_INFO", loginInfo })
+//   updateUserInfo: userInfo => dispatch({ type: "UPDATE_USER_INFO", userInfo })
 // })
 
-export default connect( ({loginInfo}) => ({loginInfo}), {fetchLoginInfo, updateLoginInfo} )(App);
+export default connect( ({userInfo}) => ({userInfo}), {fetchUserInfo, updateUserInfo} )(App);

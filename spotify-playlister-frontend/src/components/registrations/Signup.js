@@ -36,7 +36,7 @@ class Signup extends Component {
         .then(response => response.json())
         .then (json => {
             if (json.status === 'created') {
-              this.props.updateLoginInfo({ isLoggedIn: true, user: json.user })
+              this.props.updateUserInfo({ isLoggedIn: true, user: json.user })
               this.redirect()
             } else {
               this.setState({ errors: json.errors })
@@ -48,12 +48,12 @@ class Signup extends Component {
 
     componentDidMount() {
         // debugger
-        this.props.fetchLoginInfo()
+        this.props.fetchUserInfo()
     }
 
-    handleLoading = () => this.props.loginInfo.loading ? this.tempPage() : this.authUser();
-    authUser = () => this.props.loginInfo.isLoggedIn ? this.redirect() : this.loadPage();
-    redirect = () => this.props.history.push(`/users/${this.props.loginInfo.user.id}/playlists`);
+    handleLoading = () => this.props.userInfo.loading ? this.tempPage() : this.authUser();
+    authUser = () => this.props.userInfo.isLoggedIn ? this.redirect() : this.loadPage();
+    redirect = () => this.props.history.push(`/users/${this.props.userInfo.user.id}/playlists`);
     
     tempPage = () => <Holding />
     loadPage = () => {
