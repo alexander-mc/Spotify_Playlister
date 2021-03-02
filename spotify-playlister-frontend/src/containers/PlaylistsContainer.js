@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
 import Holding from '../components/Holding'
+import NavBar from '../components/NavBar'
 
 class PlaylistsContainer extends Component {
 
-  handleClick = () => {        
-    fetch('http://localhost:3001/logout', {
-        method: 'DELETE',
-        credentials: 'include'
-    })
-    .then( () => {
-      this.props.updateLoginInfo({ isLoggedIn: false, user: {} })
-    })
-    .catch(error => console.log(error))
-  }
-
   componentDidMount() {
-    // debugger
+    debugger
     this.props.fetchLoginInfo()
   }
 
@@ -28,7 +18,10 @@ class PlaylistsContainer extends Component {
   }
 
   authUser = () => {
-    if (this.props.loginInfo.isLoggedIn) {
+    // Check user has logged in + :user_id matches logged in user id
+    // If :user_id does not match logged in user id, force correct user id in url and redirect PlaylistContainer
+    const isValidUser = this.props.loginInfo.user.id === parseInt(this.props.match.params.user_id,10)
+    if (isValidUser) {
       return this.loadPage()
     } else {
       return this.redirect()
@@ -44,8 +37,7 @@ class PlaylistsContainer extends Component {
   loadPage = () => {
     return (
       <div>
-        <button onClick={this.handleClick}>Log Out</button>
-        {this.props.loginInfo.user.id}
+        <NavBar loginInfo={this.props.loginInfo} updateLoginInfo={this.props.updateLoginInfo} />
       </div>
     );
   }

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import App from './App';
+import App from './containers/App';
 import rootReducer from './reducers/managePlaylist';
 
 import './index.css';

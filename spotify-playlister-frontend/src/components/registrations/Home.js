@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Holding from '../Holding'
 
-class Index extends Component {
+class Home extends Component {
 
   componentDidMount() {
     // debugger
@@ -27,4 +27,4 @@ class Index extends Component {
   render () { return <div>{ this.handleLoading() }</div> }
 };
 
-export default Index;
+export default Home;

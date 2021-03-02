@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import PlaylistsContainer from '../containers/PlaylistsContainer'
-import Index from '../components/registrations/Index'
+import Home from '../components/registrations/Home'
 import Login from '../components/registrations/Login'
 import Signup from '../components/registrations/Signup'
 import NoMatch from '../components/NoMatch'
 import { updateLoginInfo, fetchLoginInfo } from '../actions/loginActions'
+import './App.css';
 
-class RegistrationsContainer extends Component {
+class App extends Component {
 
   render() {
     const {loginInfo, updateLoginInfo, fetchLoginInfo} = this.props
@@ -21,7 +22,7 @@ class RegistrationsContainer extends Component {
             <Route
               exact path='/' 
               render={props => (
-              <Index {...props} fetchLoginInfo={fetchLoginInfo} loginInfo={loginInfo} /> )}
+              <Home {...props} fetchLoginInfo={fetchLoginInfo} loginInfo={loginInfo} /> )}
             />
             <Route 
               exact path='/login'
@@ -51,4 +52,4 @@ class RegistrationsContainer extends Component {
 //   updateLoginInfo: loginInfo => dispatch({ type: "UPDATE_LOGIN_INFO", loginInfo })
 // })
 
-export default connect( ({loginInfo}) => ({loginInfo}), {fetchLoginInfo, updateLoginInfo} )(RegistrationsContainer);
+export default connect( ({loginInfo}) => ({loginInfo}), {fetchLoginInfo, updateLoginInfo} )(App);
