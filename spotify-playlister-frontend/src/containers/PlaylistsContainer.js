@@ -20,7 +20,7 @@ class PlaylistsContainer extends Component {
     // Check user has logged in + :userId matches logged in user id
     // If :userId does not match logged in user id, force correct user id in url and redirect PlaylistContainer
     const isValidUser = this.props.user.id === parseInt(this.props.match.params.userId, 10)
-    isValidUser ? this.loadPage() : this.redirect()
+    return isValidUser ? this.loadPage() : this.redirect()
   }
   
   redirect = () => this.props.history.push('/')
