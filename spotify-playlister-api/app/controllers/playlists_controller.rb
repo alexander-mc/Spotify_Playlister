@@ -1,7 +1,6 @@
 class PlaylistsController < ApplicationController
-    # before_action :redirect_if_logged_in, only: [:new]
-
-    # TODO: Place a before_action to validate that user_id matches user who is logged in
+    before_action :is_valid_user
+    before_action :is_valid_playlist, only: [:update, :destroy]
 
     def create
         playlist = Playlist.new(playlist_params)
@@ -14,7 +13,6 @@ class PlaylistsController < ApplicationController
             }
         else
             render json: {
-                status: 500,
                 errors: playlist.errors.full_messages
             }
         end
@@ -22,13 +20,26 @@ class PlaylistsController < ApplicationController
     end
 
     def destroy
-        Playlist.find_by(id: params[:id]).destroy
+        current_playlist.destroy
+        render json: {message: 'Success'}
     end
 
     private
 
     def playlist_params
         params.require(:playlist).permit(:name, :user_id)
+    end
+
+    def current_playlist
+        current_user.playlists.find_by(id: params[:id])
+    end
+
+    def is_valid_playlist
+        if !current_playlist
+            render json: {errors: ["That playlist could not be found"]}
+        end
+
+        return true
     end
 
 end

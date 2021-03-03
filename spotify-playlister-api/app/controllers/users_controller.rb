@@ -1,9 +1,4 @@
 class UsersController < ApplicationController
-    # before_action :redirect_if_logged_in, only: [:new]
-
-    # def new
-    #     @user = User.new # do we need the @???
-    # end
 
     def create
         user = User.new(user_params)
@@ -18,7 +13,6 @@ class UsersController < ApplicationController
             }
         else
             render json: {
-                status: 500,
                 errors: user.errors.full_messages
             }
         end

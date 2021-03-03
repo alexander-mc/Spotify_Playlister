@@ -14,29 +14,16 @@ class PlaylistsContainer extends Component {
     this.props.fetchUser()
   }
 
-  handleLoading = () => {
-    if (this.props.user.loading) {
-      return this.tempPage()
-    }  else {
-      return this.authUser()
-    }
-  }
+  handleLoading = () => this.props.user.loading ? this.tempPage() : this.authUser()
 
   authUser = () => {
     // Check user has logged in + :userId matches logged in user id
     // If :userId does not match logged in user id, force correct user id in url and redirect PlaylistContainer
     const isValidUser = this.props.user.id === parseInt(this.props.match.params.userId, 10)
-    if (isValidUser) {
-      return this.loadPage()
-    } else {
-      return this.redirect()
-    }
+    isValidUser ? this.loadPage() : this.redirect()
   }
-
-  redirect = () => {
-    this.props.history.push('/')
-  }
-
+  
+  redirect = () => this.props.history.push('/')
   tempPage = () => <Holding />
 
   loadPage = () => {

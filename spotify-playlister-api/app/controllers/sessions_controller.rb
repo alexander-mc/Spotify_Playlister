@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
             }
         else
             render json: { 
-                status: 401,
                 errors: ["Sorry, that username and/or password could not be found."]
               }
         end
@@ -22,13 +21,13 @@ class SessionsController < ApplicationController
     def destroy
         logout!
         render json: {
-            status: 200,
             isLoggedIn: false
         }
     end
 
     # Gets called in componentDidMount methods
     def is_logged_in?
+
         if logged_in?
           render json: {
             isLoggedIn: true,

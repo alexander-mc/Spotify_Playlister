@@ -6,11 +6,14 @@ const Playlist = ({url, playlist, deletePlaylist}) => {
     const handleClick = () => {
         const configObj = {
             method: 'DELETE',
-            headers: {'Content-type': 'application/json; charset=UTF-8', credentials: 'include' }
+            headers: {'Content-type': 'application/json; charset=UTF-8'},
+            credentials: 'include'
         }
 
         fetch(`http://localhost:3001/users/${playlist.userId}/playlists/${playlist.id}`, configObj)   
-        deletePlaylist(playlist.id)
+        .then(response => response.json())
+        .then(json => !json.errors ? deletePlaylist(playlist.id) : alert(json.errors.join("\n")))
+        .catch(error => console.log('API errors:', error))
     }
 
     return (

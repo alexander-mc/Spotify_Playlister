@@ -32,7 +32,6 @@ function playlistsReducer(state = [], action) {
 
     switch (action.type) {
         case "ADD_PLAYLIST":
-            debugger
             return [...state, action.playlist]
             
         case "DELETE_PLAYLIST":

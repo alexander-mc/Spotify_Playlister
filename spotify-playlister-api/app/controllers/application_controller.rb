@@ -31,4 +31,12 @@ class ApplicationController < ActionController::Base
         session.clear
     end
 
+    def is_valid_user
+        if !current_user
+            render json: {errors: ["User could not be found"]}
+        end
+
+        return true
+    end
+
 end
