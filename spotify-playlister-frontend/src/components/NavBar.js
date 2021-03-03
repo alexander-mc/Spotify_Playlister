@@ -9,7 +9,7 @@ const NavBar = (props) => {
             credentials: 'include'
         })
         .then( () => {
-          props.updateUserInfo({ isLoggedIn: false, user: {} })
+          props.logoutUser()
         })
         .catch(error => console.log(error))
     }
@@ -17,9 +17,9 @@ const NavBar = (props) => {
     return (
         <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
             <span style={{ textTransform: 'uppercase', marginRight: '10px'}}>
-                Welcome {props.userInfo.user.username}
+                Welcome {props.user.username}
             </span>
-            <NavLink exact to={`/users/${props.userInfo.user.id}/playlists`} style={{ marginRight: '10px' }} activeClassName="nav-active" >
+            <NavLink exact to={`/users/${props.user.id}/playlists`} style={{ marginRight: '10px' }} activeClassName="nav-active" >
                 MAIN
             </NavLink>
             <button onClick={handleClick}>LOG OUT</button>

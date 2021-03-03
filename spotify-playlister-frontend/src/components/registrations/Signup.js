@@ -19,7 +19,7 @@ class Signup extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
     
-        let confObj = {
+        let configObj = {
             user: {
                 username: this.state.username,
                 password: this.state.password,
@@ -31,12 +31,12 @@ class Signup extends Component {
             method: 'POST',
             headers: { 'Content-type': 'application/json; charset=UTF-8' },
             credentials: 'include',
-            body: JSON.stringify(confObj)
+            body: JSON.stringify(configObj)
         })
         .then(response => response.json())
         .then (json => {
-            if (json.status === 'created') {
-              this.props.updateUserInfo({ isLoggedIn: true, user: json.user })
+            if (json.isLoggedIn) {
+              this.props.addUser(json)
               this.redirect()
             } else {
               this.setState({ errors: json.errors })
@@ -48,12 +48,12 @@ class Signup extends Component {
 
     componentDidMount() {
         // debugger
-        this.props.fetchUserInfo()
+        this.props.fetchUser()
     }
 
-    handleLoading = () => this.props.userInfo.loading ? this.tempPage() : this.authUser();
-    authUser = () => this.props.userInfo.isLoggedIn ? this.redirect() : this.loadPage();
-    redirect = () => this.props.history.push(`/users/${this.props.userInfo.user.id}/playlists`);
+    handleLoading = () => this.props.user.loading ? this.tempPage() : this.authUser();
+    authUser = () => this.props.user.isLoggedIn ? this.redirect() : this.loadPage();
+    redirect = () => this.props.history.push(`/users/${this.props.user.id}/playlists`);
     
     tempPage = () => <Holding />
     loadPage = () => {

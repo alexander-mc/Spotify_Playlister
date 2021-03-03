@@ -7,13 +7,13 @@ import Home from '../components/registrations/Home'
 import Login from '../components/registrations/Login'
 import Signup from '../components/registrations/Signup'
 import NoMatch from '../components/NoMatch'
-import { updateUserInfo, fetchUserInfo } from '../actions/userInfoActions'
+import { fetchUser, loginUser, logoutUser } from '../actions/userActions'
 import './App.css';
 
 class App extends Component {
 
   render() {
-    const {userInfo, updateUserInfo, fetchUserInfo} = this.props
+    const {fetchUser, user, loginUser, logoutUser} = this.props
 
     return (
       <div>
@@ -22,22 +22,22 @@ class App extends Component {
             <Route
               exact path='/' 
               render={props => (
-              <Home {...props} fetchUserInfo={fetchUserInfo} userInfo={userInfo} /> )}
+              <Home {...props} fetchUser={fetchUser} user={user} /> )}
             />
             <Route 
               exact path='/login'
               render={props => (
-              <Login {...props} fetchUserInfo={fetchUserInfo} userInfo={userInfo} updateUserInfo={updateUserInfo} /> )}
+              <Login {...props} fetchUser={fetchUser} user={user} loginUser={loginUser} /> )}
             />
             <Route 
               exact path='/signup' 
               render={props => (
-              <Signup {...props} fetchUserInfo={fetchUserInfo} userInfo={userInfo} updateUserInfo={updateUserInfo} /> )}
+              <Signup {...props} fetchUser={fetchUser} user={user} loginUser={loginUser} /> )}
             />
             <Route
-              exact path='/users/:user_id/playlists'
+              path='/users/:userId/playlists'
               render={props => (
-              <PlaylistsContainer {...props} fetchUserInfo={fetchUserInfo} userInfo={userInfo} updateUserInfo={updateUserInfo} /> )}
+              <PlaylistsContainer {...props} fetchUser={fetchUser} user={user} loginUser={loginUser} logoutUser={logoutUser} /> )}
             />
             <Route path='*' render={() => <NoMatch /> }/>
           </Switch>
@@ -47,9 +47,9 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = ({userInfo}) => ({userInfo})
+// const mapStateToProps = ({user}) => ({user})
 // const mapDispatchToProps = dispatch => ({
-//   updateUserInfo: userInfo => dispatch({ type: "UPDATE_USER_INFO", userInfo })
+//   loginUser: user => dispatch({ type: "ADD_USER", user }) // or, if importing actions -> loginUser: user => dispatch(loginUser(user))
 // })
 
-export default connect( ({userInfo}) => ({userInfo}), {fetchUserInfo, updateUserInfo} )(App);
+export default connect( ({user}) => ({user}), {fetchUser, loginUser, logoutUser} )(App);

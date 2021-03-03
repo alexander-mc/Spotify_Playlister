@@ -1,8 +1,8 @@
 import { combineReducers } from "redux"
-import {v4 as uuid} from "uuid"; 
+import { v4 as uuid } from "uuid"; 
 
 const rootReducer = combineReducers({
-    userInfo: userInfoReducer,
+    user: userReducer,
     playlists: playlistsReducer,
     songs: songsReducer
 })
@@ -11,14 +11,17 @@ export default rootReducer;
 
 // TODO: MODIFY REDUCERS
 
-function userInfoReducer(state = { isLoggedIn: false, user: {}, loading: true }, action) {
+function userReducer(state = { id:'', username: '', isLoggedIn: false, loading: true }, action) {
     
     switch (action.type) {
-        case "LOADING_USER_INFO":
+        case "LOADING_USER":
             return { ...state, loading: true }
         
-        case "UPDATE_USER_INFO":
-            return { ...action.userInfo, loading: false }
+        case "LOGIN_USER":
+            return { ...action.user, loading: false }
+
+        case "LOGOUT_USER":
+            return { isLoggedIn: false, loading: false }
 
         default:
             return state
@@ -26,12 +29,14 @@ function userInfoReducer(state = { isLoggedIn: false, user: {}, loading: true },
 }
 
 function playlistsReducer(state = [], action) {
+
     switch (action.type) {
         case "ADD_PLAYLIST":
-            return [...state, {id: uuid(), text: action.text}]
+            debugger
+            return [...state, action.playlist]
             
         case "DELETE_PLAYLIST":
-            return state.filter( r => r.id !== action.id )
+            return state.filter( playlist => playlist.id !== action.id )
             
         default:
             return state;

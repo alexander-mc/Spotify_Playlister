@@ -6,12 +6,12 @@ class Home extends Component {
 
   componentDidMount() {
     // debugger
-    this.props.fetchUserInfo()
+    this.props.fetchUser()
   }
 
-  handleLoading = () => this.props.userInfo.loading ? this.tempPage() : this.authUser();
-  authUser = () => this.props.userInfo.isLoggedIn ? this.redirect() : this.loadPage();
-  redirect = () => this.props.history.push(`/users/${this.props.userInfo.user.id}/playlists`); // window.location.href = `/users/${user_id}/playlists`
+  handleLoading = () => this.props.user.loading ? this.tempPage() : this.authUser();
+  authUser = () => this.props.user.isLoggedIn ? this.redirect() : this.loadPage();
+  redirect = () => this.props.history.push(`/users/${this.props.user.id}/playlists`); // window.location.href = `/users/${user_id}/playlists`
   
   tempPage = () => <Holding />
   loadPage = () => {
