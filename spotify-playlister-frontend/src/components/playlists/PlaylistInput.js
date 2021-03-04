@@ -8,7 +8,7 @@ class PlaylistInput extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         
-        const { user, addPlaylist, url, history } = this.props
+        const { user, addPlaylist, match, history } = this.props
         const configObj = {
             playlist: { name: this.state.name, user_id: user.id }
         }
@@ -24,7 +24,7 @@ class PlaylistInput extends Component {
             
             if (!json.errors) {
                 addPlaylist(json)
-                history.push(`${url}/${json.id}/songs`)
+                history.push(`${match.url}/${json.id}/songs`)
             } else {
                 this.setState({ errors: json.errors })
             }

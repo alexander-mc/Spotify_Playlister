@@ -27,24 +27,24 @@ class PlaylistsContainer extends Component {
   tempPage = () => <Holding />
 
   loadPage = () => {
-    const { user, logoutUser, match, history, playlists, addPlaylist, deletePlaylist } = this.props
+    const { user, logoutUser, match, playlists, addPlaylist, deletePlaylist } = this.props
 
     return (
       <div>
         <NavBar user={user} logoutUser={logoutUser} />
         <Route 
           exact path={`${match.url}`}
-          render={ () => (
+          render={ (props) => (
             <div>
-              <PlaylistInput user={user} url={match.url} history={history} addPlaylist={addPlaylist} />
-              <Playlists url={match.url} playlists={playlists} deletePlaylist={deletePlaylist} />
+              <PlaylistInput {...props} user={user} addPlaylist={addPlaylist} />
+              <Playlists {...props} playlists={playlists} deletePlaylist={deletePlaylist} />
             </div>
           )}
         />
         <Route 
           path={`${match.url}/:playlistId/songs`}
           render={ props => (
-            <SongsContainer {...props} /> )}
+            <SongsContainer {...props} user={user} playlists={playlists} /> )}
         />
       </div>
     );

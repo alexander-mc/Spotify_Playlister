@@ -9,8 +9,6 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-// TODO: MODIFY REDUCERS
-
 function userReducer(state = { id:'', username: '', isLoggedIn: false, loading: true }, action) {
     
     switch (action.type) {
@@ -31,12 +29,18 @@ function userReducer(state = { id:'', username: '', isLoggedIn: false, loading: 
 function playlistsReducer(state = [], action) {
 
     switch (action.type) {
+
         case "ADD_PLAYLIST":
             return [...state, action.playlist]
+            // Alternative code: Only add a playlist if it is not already in state
+            // return state.find(e => e.id === action.playlist.id) ? [...state] : [...state, action.playlist];    
+
+        case "DELETE_PLAYLIST": 
+            return state.filter( playlist => playlist.id !== action.id );
             
-        case "DELETE_PLAYLIST":
-            return state.filter( playlist => playlist.id !== action.id )
-            
+        case "RESET_PLAYLIST_STORE":
+            return action.playlists;
+
         default:
             return state;
     }
@@ -51,6 +55,9 @@ function songsReducer(state = [], action) {
 
         case "DELETE_SONG":
             return state.filter(r => r.id !== action.id)
+            
+        case "RESET_SONG_STORE":
+            return action.songs;
 
         default:
             return state

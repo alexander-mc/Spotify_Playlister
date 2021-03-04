@@ -29,13 +29,26 @@ class SessionsController < ApplicationController
     def is_logged_in?
 
         if logged_in?
+
+          songs = current_user.songs.map do | song |
+            playlistIds = song.playlists.map { |p| p.id }
+            song_hash = song.attributes
+            song_hash[:playlistIds] = playlistIds
+            song_hash
+          end
+
           render json: {
-            isLoggedIn: true,
-            id: current_user.id,
-            username: current_user.username
+            user: {
+              isLoggedIn: true,
+              id: current_user.id,
+              username: current_user.username
+              },
+            playlists: current_user.playlists,
+            songs: songs
           }
+
         else
-          render json: { isLoggedIn: false }
+          render json: { user: {isLoggedIn: false} }
         end
     end
 
