@@ -49,13 +49,15 @@ function playlistsReducer(state = [], action) {
 function songsReducer(state = [], action) {
     switch (action.type) {
         case "ADD_SONG":
-            const review = { text: action.review.text, restaurantId: action.review.restaurantId, id: uuid() };
-            return [...state, review]
-            // return [...state, {id: cuid(), text: action.text, restaurantId: action.restaurantId}]
+            const song = { title: action.song.title, clientId: uuid() };
+            return [...state, song]
 
         case "DELETE_SONG":
-            return state.filter(r => r.id !== action.id)
-            
+            return state.filter( song => song.clientId !== action.clientId )
+           
+        // case "SAVE_SONG":
+        //     return null
+
         case "RESET_SONG_STORE":
             return action.songs;
 

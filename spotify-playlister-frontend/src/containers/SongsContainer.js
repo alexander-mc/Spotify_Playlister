@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import SongInput from '../components/songs/SongInput'
+import Search from '../components/songs/Search'
 import Songs from '../components/songs/Songs'
 
 class SongsContainer extends Component {
@@ -37,7 +37,7 @@ class SongsContainer extends Component {
         return (
             <div>
                 <h3>{this.findPlaylist().name}</h3>
-                {/* <SongInput /> */}
+                <Search />
                 <Songs songs={this.playlistSongs()} />
                 <button onClick={this.handleClick}>Save</button>
             </div>
