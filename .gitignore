@@ -37,4 +37,5 @@ yarn-debug.log*
 # Additional files to ignore
 /.DS_Store
 /.env
+/spotify-playlister-frontend/.env
 /NOTES.md
