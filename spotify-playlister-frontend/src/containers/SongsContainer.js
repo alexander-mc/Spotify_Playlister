@@ -36,10 +36,9 @@ class SongsContainer extends Component {
 
         return (
             <div>
-                <h3>{this.findPlaylist().name}</h3>
                 <Search />
+                <h3>{this.findPlaylist().name}</h3>
                 <Songs songs={this.playlistSongs()} />
-                <button onClick={this.handleClick}>Save</button>
             </div>
         )
     }
@@ -48,4 +47,4 @@ class SongsContainer extends Component {
 
 };
 
-export default connect( ({songs}) => ({songs}), {  } )(SongsContainer)
+export default connect( ({songs}) => ({songs} ), {  } )(SongsContainer)

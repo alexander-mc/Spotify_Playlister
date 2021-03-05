@@ -11,7 +11,7 @@ export const logoutUser = () => {
 
 export const fetchUser = () => {
     return dispatch => {
-        dispatch({type: 'LOADING_USER'});       
+        dispatch({type: 'LOADING_USER'});   
         fetch('http://localhost:3001/logged_in', { credentials: 'include' })
         .then(response => response.json())
         .then(json => {

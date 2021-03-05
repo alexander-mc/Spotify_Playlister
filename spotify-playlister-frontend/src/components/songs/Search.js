@@ -4,73 +4,70 @@ import SearchResults from './SearchResults'
 
 class Search extends Component {
 
-    state = { query: "", results: [] }
-    
-    handleChange = (e) => this.setState({ query: e.target.value })
-    handleSubmit = (e) => {
-      e.preventDefault();        
-      this.setState({ query: '' })
+  static CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
+  static CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET;
+
+  state = { query: "", searchResults: [], errors: "" }
+  
+  accessSpotifyAPI = (query) => {
       
-      const request = require('request'); // "Request" library
-      const client_id = '1ffa3ac0ae7b4bd6b6058b10e66c9475'; // Your client id
-      const client_secret = '49276a663c6c44d2b7635e0d5677f40f'; // Your secret
+    // Authorize user via Spotify's Client Credientials authorization flow
+    // For more info: https://github.com/spotify/web-api-auth-examples
+    const request = require('request')      
+    const authOptions = {
+      url: 'https://accounts.spotify.com/api/token',
+      headers: { 'Authorization': 'Basic ' + (new Buffer(Search.CLIENT_ID + ':' + Search.CLIENT_SECRET).toString('base64')) },
+      form: { grant_type: 'client_credentials' },
+      json: true
+    };
       
-      // your application requests authorization
-      const authOptions = {
-        url: 'https://accounts.spotify.com/api/token',
-        headers: {
-          'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
-        },
-        form: {
-          grant_type: 'client_credentials'
-        },
-        json: true
-      };
+    request.post(authOptions, (error, response, body) => {
+      if (!error && response.statusCode === 200) {
+        
+        // Access Spotify API via Spotify Web API JS wrapper
+        // For more info: https://github.com/JMPerez/spotify-web-api-js
+        const spotify = new SpotifyWebApi();
+        const token = body.access_token;
+        
+        spotify.setAccessToken(token)
+        spotify.searchTracks(query, { limit: 3 }).then(
+          (data) => {
+            data.tracks.items.length > 0 ?
+              this.setState( {searchResults: data.tracks.items} ) :
+              this.setState( {errors: "Sorry, we could not find any songs."} )
+            console.log(this.state.searchResults)
+          },
+          (err) => {
+            console.error(err);
+          }
+        )
+      }
+    })
+  }
 
-      request.post(authOptions, function(error, response, body) {
-        if (!error && response.statusCode === 200) {
-          
-          // use the access token to access the Spotify Web API
-          const token = body.access_token;
-          
-          const spotify = new SpotifyWebApi();
-          spotify.setAccessToken(token)
-          spotify.searchTracks('Love', { limit: 10 }).then(
-            function (data) {
-              console.log('Search by "Love"', data);
-            },
-            function (err) {
-              console.error(err);
-            }
-          );
+  handleChange = (e) => this.setState({ query: e.target.value })
+  handleSubmit = (e) => {
+    e.preventDefault();        
+    this.setState({ errors: '' })
+    this.accessSpotifyAPI(this.state.query)
+    this.setState({ query: '' })
+  }    
 
+  resetSearch = () => this.setState( { query: "", searchResults: [], errors: "" } )
 
-          const options = {
-            url: 'https://api.spotify.com/v1/users/jmperezperez',
-            headers: {
-              'Authorization': 'Bearer ' + token
-            },
-            json: true
-          };
-          request.get(options, function(error, response, body) {
-            console.log(body);
-          });
-        }
-      });
-
-    }    
-
-    render() {
-        return (
-          <div>
-            <form onSubmit={ this.handleSubmit }>
-              <input type="text" onChange={ this.handleChange } value={this.state.query} />
-              <input type="submit" />
-            </form>
-            {/* <SearchResults /> */}
-          </div>
-        );
-    }
-};
+  render() {
+    const {query, searchResults, errors} = this.state
+    return (
+      <div>
+        <form onSubmit={ this.handleSubmit }>
+          <input type="text" onChange={ this.handleChange } value={query} />
+          <input type="submit" />
+          <button onClick={this.resetSearch}>Clear</button>
+        </form>
+        <SearchResults songs={searchResults} errors={errors} />
+      </div>
+    )
+  }
+}
 
 export default Search;
