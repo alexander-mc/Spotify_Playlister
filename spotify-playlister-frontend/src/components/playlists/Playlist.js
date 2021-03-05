@@ -17,8 +17,8 @@ const Playlist = ({url, playlist, deletePlaylist}) => {
     }
 
     return (
-        <li>
-            <Link key={playlist.id} to={`${url}/${playlist.id}/songs`}>{playlist.name}</Link>
+        <li key={playlist.id}>
+            <Link to={`${url}/${playlist.id}/songs`}>{playlist.name}</Link>
             <button onClick={handleClick} > X </button>
         </li>
     );

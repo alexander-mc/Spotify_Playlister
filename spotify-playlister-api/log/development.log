@@ -32538,3 +32538,191 @@ Processing by SessionsController#is_logged_in? as */*
 Completed 200 OK in 25ms (Views: 5.2ms | ActiveRecord: 2.8ms | Allocations: 8252)
 
 
+Started GET "/logged_in" for ::1 at 2021-03-04 21:59:44 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" INNER JOIN "playlists" ON "playlist_songs"."playlist_id" = "playlists"."id" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:33:in `map'
+  [1m[36mPlaylist Load (0.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mPlaylist Load (0.1ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 3]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:40:in `is_logged_in?'
+Completed 200 OK in 27ms (Views: 5.0ms | ActiveRecord: 1.4ms | Allocations: 8251)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-04 22:01:08 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" INNER JOIN "playlists" ON "playlist_songs"."playlist_id" = "playlists"."id" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:33:in `map'
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mPlaylist Load (0.8ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 3]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:40:in `is_logged_in?'
+Completed 200 OK in 22ms (Views: 4.7ms | ActiveRecord: 1.8ms | Allocations: 8186)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-04 22:10:01 -0800
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" INNER JOIN "playlists" ON "playlist_songs"."playlist_id" = "playlists"."id" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:33:in `map'
+  [1m[36mPlaylist Load (0.6ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mPlaylist Load (0.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 3]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:40:in `is_logged_in?'
+Completed 200 OK in 22ms (Views: 3.4ms | ActiveRecord: 1.8ms | Allocations: 8250)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-04 22:13:02 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mSong Load (0.6ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" INNER JOIN "playlists" ON "playlist_songs"."playlist_id" = "playlists"."id" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:33:in `map'
+  [1m[36mPlaylist Load (0.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mPlaylist Load (0.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 3]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:40:in `is_logged_in?'
+Completed 200 OK in 24ms (Views: 5.6ms | ActiveRecord: 1.5ms | Allocations: 8189)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-04 22:15:53 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" INNER JOIN "playlists" ON "playlist_songs"."playlist_id" = "playlists"."id" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:33:in `map'
+  [1m[36mPlaylist Load (0.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mPlaylist Load (0.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 3]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:40:in `is_logged_in?'
+Completed 200 OK in 23ms (Views: 4.1ms | ActiveRecord: 1.3ms | Allocations: 8185)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-04 22:46:09 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" INNER JOIN "playlists" ON "playlist_songs"."playlist_id" = "playlists"."id" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:33:in `map'
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mPlaylist Load (0.1ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 3]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPlaylist Load (0.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:40:in `is_logged_in?'
+Completed 200 OK in 22ms (Views: 6.0ms | ActiveRecord: 1.5ms | Allocations: 8249)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-05 00:14:40 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" INNER JOIN "playlists" ON "playlist_songs"."playlist_id" = "playlists"."id" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:33:in `map'
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mPlaylist Load (0.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 3]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:40:in `is_logged_in?'
+Completed 200 OK in 25ms (Views: 7.9ms | ActiveRecord: 2.1ms | Allocations: 8252)
+
+
+Started GET "/logged_in" for ::1 at 2021-03-05 00:14:51 -0800
+Processing by SessionsController#is_logged_in? as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mSong Load (0.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs" INNER JOIN "playlist_songs" ON "songs"."id" = "playlist_songs"."song_id" INNER JOIN "playlists" ON "playlist_songs"."playlist_id" = "playlists"."id" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:33:in `map'
+  [1m[36mPlaylist Load (0.2ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" INNER JOIN "playlist_songs" ON "playlists"."id" = "playlist_songs"."playlist_id" WHERE "playlist_songs"."song_id" = ?[0m  [["song_id", 3]]
+  ↳ app/controllers/sessions_controller.rb:34:in `map'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT "playlists".* FROM "playlists" WHERE "playlists"."user_id" = ?[0m  [["user_id", 4]]
+  ↳ app/controllers/sessions_controller.rb:40:in `is_logged_in?'
+Completed 200 OK in 22ms (Views: 5.4ms | ActiveRecord: 1.5ms | Allocations: 8190)
+
+

@@ -16,7 +16,7 @@ const Song = ({song}) => {
     }
 
     return (
-        <li>
+        <li key={song.id}>
             {song.title}
             <button onClick={handleClick} > X </button>
         </li>

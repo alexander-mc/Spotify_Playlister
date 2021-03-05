@@ -4,7 +4,8 @@ import { v4 as uuid } from "uuid";
 const rootReducer = combineReducers({
     user: userReducer,
     playlists: playlistsReducer,
-    songs: songsReducer
+    songs: songsReducer,
+    searchResults: searchReducer
 })
 
 export default rootReducer;
@@ -60,6 +61,25 @@ function songsReducer(state = [], action) {
 
         case "RESET_SONG_STORE":
             return action.songs;
+
+        default:
+            return state
+    }
+}
+
+function searchReducer(state = { songs: [], message: '' }, action) {
+    switch (action.type) {
+        case "ADD_SEARCH_RESULTS":
+            return { songs: action.searchResults, message: ''}
+
+        case "DELETE_SEARCH_RESULTS":
+            return { songs: [], message: '' }
+
+        case "ADD_SEARCH_MESSAGE":
+            return { ...state, message: action.message }
+
+        case "DELETE_SEARCH_MESSAGE":
+            return { ...state, message: '' }
 
         default:
             return state

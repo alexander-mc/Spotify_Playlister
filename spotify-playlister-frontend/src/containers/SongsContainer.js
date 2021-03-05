@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Search from '../components/songs/Search'
+import SearchContainer from './SearchContainer'
 import Songs from '../components/songs/Songs'
+import { addSong } from '../actions/songActions'
 
 class SongsContainer extends Component {
 
@@ -34,9 +35,11 @@ class SongsContainer extends Component {
 
     loadPage = () => {
 
+        const {addSong} = this.props
+
         return (
             <div>
-                <Search />
+                <SearchContainer />
                 <h3>{this.findPlaylist().name}</h3>
                 <Songs songs={this.playlistSongs()} />
             </div>

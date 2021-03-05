@@ -4,7 +4,7 @@ import Song from './Song'
 const Songs = ({ songs }) => {
 
     const renderList = () => {
-        return songs.map( song => <ul><Song song={song} /></ul> )
+        return <ul>{songs.map( song => <Song song={song} /> )}</ul>
     }
   
     return (
