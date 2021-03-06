@@ -7,6 +7,7 @@ import PlaylistInput from '../components/playlists/PlaylistInput'
 import SongsContainer from './SongsContainer'
 import { connect } from 'react-redux'
 import { addPlaylist, deletePlaylist } from '../actions/playlistActions'
+import { deleteSearchResults } from '../actions/searchActions'
 
 class PlaylistsContainer extends Component {
 
@@ -27,7 +28,7 @@ class PlaylistsContainer extends Component {
   tempPage = () => <Holding />
 
   loadPage = () => {
-    const { user, logoutUser, match, playlists, addPlaylist, deletePlaylist } = this.props
+    const { user, logoutUser, match, playlists, addPlaylist, deletePlaylist, deleteSearchResults } = this.props
 
     return (
       <div>
@@ -44,7 +45,7 @@ class PlaylistsContainer extends Component {
         <Route 
           path={`${match.url}/:playlistId/songs`}
           render={ props => (
-            <SongsContainer {...props} user={user} playlists={playlists} /> )}
+            <SongsContainer {...props} user={user} playlists={playlists} deleteSearchResults={deleteSearchResults} /> )}
         />
       </div>
     );
@@ -53,4 +54,4 @@ class PlaylistsContainer extends Component {
   render () { return <div>{ this.handleLoading() }</div> }
 };
   
-export default connect( ({playlists}) => ({playlists}), { addPlaylist, deletePlaylist } )(PlaylistsContainer)
+export default connect( ({playlists}) => ({playlists}), { addPlaylist, deletePlaylist, deleteSearchResults } )(PlaylistsContainer)

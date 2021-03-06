@@ -9,7 +9,7 @@ const Playlist = ({url, playlist, deletePlaylist}) => {
             headers: {'Content-type': 'application/json; charset=UTF-8'},
             credentials: 'include'
         }
-
+        
         fetch(`http://localhost:3001/users/${playlist.userId}/playlists/${playlist.id}`, configObj)   
         .then(response => response.json())
         .then(json => !json.errors ? deletePlaylist(playlist.id) : alert(json.errors.join("\n")))

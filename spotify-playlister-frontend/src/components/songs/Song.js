@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Song = ({song}) => {
+const Song = ({song, deleteSong}) => {
     
     const handleClick = () => {
+        deleteSong(song.id);
         // const configObj = {
         //     method: 'DELETE',
         //     headers: {'Content-type': 'application/json; charset=UTF-8'},

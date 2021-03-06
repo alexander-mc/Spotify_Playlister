@@ -1,10 +1,10 @@
 import React from 'react';
 import Song from './Song'
 
-const Songs = ({ songs }) => {
+const Songs = ({ songs, deleteSong }) => {
 
     const renderList = () => {
-        return <ul>{songs.map( song => <Song song={song} /> )}</ul>
+        return <ul>{songs.map( song => <Song song={song} deleteSong={deleteSong} /> )}</ul>
     }
   
     return (

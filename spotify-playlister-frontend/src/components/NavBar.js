@@ -1,28 +1,31 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { deleteSearchResults } from '../actions/searchActions'
 
-const NavBar = (props) => {
+const NavBar = ({user, logoutUser}) => {
 
-    const handleClick = () => {
+    const handleClickLogout = () => {
         fetch('http://localhost:3001/logout', {
             method: 'DELETE',
             credentials: 'include'
         })
         .then( () => {
-          props.logoutUser()
+          logoutUser()
         })
         .catch(error => console.log(error))
     }
 
+    // const handleClickMain = () => deleteSearchResults
+
     return (
         <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
             <span style={{ textTransform: 'uppercase', marginRight: '10px'}}>
-                Welcome {props.user.username}
+                Welcome {user.username}
             </span>
-            <NavLink exact to={`/users/${props.user.id}/playlists`} style={{ marginRight: '10px' }} activeClassName="nav-active" >
+            <NavLink exact to={`/users/${user.id}/playlists`} style={{ marginRight: '10px' }} activeClassName="nav-active" >
                 MAIN
             </NavLink>
-            <button onClick={handleClick}>LOG OUT</button>
+            <button onClick={handleClickLogout}>LOG OUT</button>
         </div>
     )
 }

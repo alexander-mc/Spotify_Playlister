@@ -36,7 +36,7 @@ class Signup extends Component {
         .then(response => response.json())
         .then (json => {
             if (json.isLoggedIn) {
-              this.props.addUser(json)
+              this.props.loginUser(json)
               this.redirect()
             } else {
               this.setState({ errors: json.errors })

@@ -2,22 +2,22 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import SearchInput from '../components/search/SearchInput'
 import SearchResults from '../components/search/SearchResults'
-import { addSearchResults, deleteSearchResults, addSearchMessage, deleteSearchMessage } from '../actions/searchActions'
+import { addSearchResults, deleteSearchResults, addSearchMessage } from '../actions/searchActions'
 
 class SearchContainer extends Component {
 
   // resetSearch = () => this.setState( { query: "", searchResults: [], errors: "" } )
 
   render() {
-    const { searchResults, addSearchResults, deleteSearchResults, addSearchMessage, deleteSearchMessage } = this.props
+    const { match, addSong, searchResults, addSearchResults, deleteSearchResults, addSearchMessage } = this.props
 
     return (
       <div>
         <SearchInput addSearchResults={addSearchResults} deleteSearchResults={deleteSearchResults} addSearchMessage={addSearchMessage}/>
-        <SearchResults songs={searchResults.songs} searchMessage={searchResults.message} />
+        <SearchResults match={match} addSong={addSong} songs={searchResults.songs} searchMessage={searchResults.message} />
       </div>
     )
   }
 }
 
-export default connect( ({searchResults}) => ({searchResults} ), { addSearchResults, deleteSearchResults, addSearchMessage, deleteSearchMessage } )(SearchContainer)
+export default connect( ({searchResults}) => ({searchResults} ), { addSearchResults, deleteSearchResults, addSearchMessage } )(SearchContainer)

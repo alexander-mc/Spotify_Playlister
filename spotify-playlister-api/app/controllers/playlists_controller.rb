@@ -1,6 +1,8 @@
 class PlaylistsController < ApplicationController
     before_action :is_valid_user
-    before_action :is_valid_playlist, only: [:update, :destroy]
+    before_action only: :destroy do
+        is_valid_playlist(params[:id])
+    end
 
     def create
         playlist = Playlist.new(playlist_params)
@@ -20,7 +22,7 @@ class PlaylistsController < ApplicationController
     end
 
     def destroy
-        current_playlist.destroy
+        current_playist(params[:id]).destroy
         render json: {message: 'Success'}
     end
 
@@ -28,18 +30,6 @@ class PlaylistsController < ApplicationController
 
     def playlist_params
         params.require(:playlist).permit(:name, :user_id)
-    end
-
-    def current_playlist
-        current_user.playlists.find_by(id: params[:id])
-    end
-
-    def is_valid_playlist
-        if !current_playlist
-            render json: {errors: ["That playlist could not be found"]}
-        end
-
-        return true
     end
 
 end

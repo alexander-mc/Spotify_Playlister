@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import SearchContainer from './SearchContainer'
 import Songs from '../components/songs/Songs'
-import { addSong } from '../actions/songActions'
+import { addSong, deleteSong } from '../actions/songActions'
 
 class SongsContainer extends Component {
 
-    // componentDidMount() {
-    //     debugger
-    //     // this.props.fetchUser()
-    // }
+    componentDidMount() {
+        this.props.deleteSearchResults()
+    }
 
     // handleLoading = () => {
     //     // if (this.props.user.loading) {
@@ -35,13 +34,13 @@ class SongsContainer extends Component {
 
     loadPage = () => {
 
-        const {addSong} = this.props
-
+        const {match, addSong, deleteSong} = this.props
+        
         return (
             <div>
-                <SearchContainer />
+                <SearchContainer match={match} addSong={addSong} />
                 <h3>{this.findPlaylist().name}</h3>
-                <Songs songs={this.playlistSongs()} />
+                <Songs songs={this.playlistSongs()} deleteSong={deleteSong} />
             </div>
         )
     }
@@ -50,4 +49,4 @@ class SongsContainer extends Component {
 
 };
 
-export default connect( ({songs}) => ({songs} ), {  } )(SongsContainer)
+export default connect( ({songs}) => ({songs} ), { addSong, deleteSong } )(SongsContainer)

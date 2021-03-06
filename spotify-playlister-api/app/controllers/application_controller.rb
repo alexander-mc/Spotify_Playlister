@@ -39,4 +39,17 @@ class ApplicationController < ActionController::Base
         return true
     end
 
+    def current_playist(playlist_id)
+        current_user.playlists.find_by(id: playlist_id)
+    end
+
+    def is_valid_playlist(playlist_id)
+        
+        if !current_playist(playlist_id)
+            render json: {errors: ["That playlist could not be found"]}
+        end
+
+        return true
+    end
+
 end

@@ -13,7 +13,7 @@ class PlaylistInput extends Component {
             playlist: { name: this.state.name, user_id: user.id }
         }
 
-        fetch(`http://localhost:3001/users/${user.id}/playlists`, {
+        fetch(`http://localhost:3001${match.url}`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json; charset=UTF-8' },
             credentials: 'include',
@@ -31,7 +31,7 @@ class PlaylistInput extends Component {
 
         })
         .catch(error => console.log('API errors:', error))
-    }    
+    }
 
     handleErrors = () => {
         return (
