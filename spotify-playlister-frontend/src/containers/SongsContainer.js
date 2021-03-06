@@ -10,14 +10,6 @@ class SongsContainer extends Component {
         this.props.deleteSearchResults()
     }
 
-    // handleLoading = () => {
-    //     // if (this.props.user.loading) {
-    //     //     return this.tempPage()
-    //     // } else {
-    //         return this.authPlaylist()
-    //     // }
-    // }
-
     handleClick = () => {
 
     }
@@ -25,30 +17,17 @@ class SongsContainer extends Component {
     findPlaylist = () => this.props.playlists.find( e => e.id === parseInt(this.props.match.params.playlistId, 10) )
     authPlaylist = () => !!this.findPlaylist() ? this.loadPage() : this.redirect()
     redirect = () => this.props.history.push(`/users/${this.props.user.id}/playlists`)
-    
-    playlistSongs = () => {
-        const songs = this.props.songs.filter( song => {
-            // debugger
-            if (song.id) {
-                if (song.playlistIds.find( id => id === parseInt(this.props.match.params.playlistId, 10))) {
-                    return true
-                } else {
-                    return false
-                }
-            }
-        })
-        return songs
-    }
 
     loadPage = () => {
 
-        const {match, addSong, deleteSong} = this.props
+        const {match, songs, addSong, deleteSong} = this.props
+        const playlistSongs = songs.filter( song => song.playlistIds.includes(parseInt(match.params.playlistId, 10)))
         
         return (
             <div>
-                <SearchContainer match={match} addSong={addSong} />
+                <SearchContainer match={match} playlistSongs={playlistSongs} addSong={addSong} />
                 <h3>{this.findPlaylist().name}</h3>
-                <Songs songs={this.playlistSongs()} deleteSong={deleteSong} />
+                <Songs playlistSongs={playlistSongs} match={match} deleteSong={deleteSong} />
             </div>
         )
     }

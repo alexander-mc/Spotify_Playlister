@@ -9,12 +9,12 @@ class SearchContainer extends Component {
   // resetSearch = () => this.setState( { query: "", searchResults: [], errors: "" } )
 
   render() {
-    const { match, addSong, searchResults, addSearchResults, deleteSearchResults, addSearchMessage } = this.props
+    const { match, addSong, playlistSongs, searchResults, addSearchResults, deleteSearchResults, addSearchMessage } = this.props
 
     return (
       <div>
         <SearchInput addSearchResults={addSearchResults} deleteSearchResults={deleteSearchResults} addSearchMessage={addSearchMessage}/>
-        <SearchResults match={match} addSong={addSong} songs={searchResults.songs} searchMessage={searchResults.message} deleteSearchResults={deleteSearchResults} />
+        <SearchResults match={match} addSong={addSong} playlistSongs={playlistSongs} searchResults={searchResults.songs} searchMessage={searchResults.message} deleteSearchResults={deleteSearchResults} />
       </div>
     )
   }

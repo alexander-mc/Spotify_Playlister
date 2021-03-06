@@ -50,15 +50,11 @@ function playlistsReducer(state = [], action) {
 function songsReducer(state = [], action) {
     switch (action.type) {
         case "ADD_SONG":
-            const song = { title: action.song.title, clientId: uuid() };
-            debugger
-            return [...state, song]
+            return [...state, action.song]
 
         case "DELETE_SONG":
-            return state.filter( song => song.clientId !== action.clientId )
-           
-        // case "SAVE_SONG":
-        //     return null
+            debugger
+            return state.filter( song => song.id !== action.id )
 
         case "RESET_SONG_STORE":
             return action.songs;

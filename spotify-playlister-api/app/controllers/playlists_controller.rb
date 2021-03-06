@@ -20,7 +20,7 @@ class PlaylistsController < ApplicationController
     end
 
     def destroy
-        current_playist(params[:id]).destroy
+        current_playlist(params[:id]).destroy
         render json: {message: 'Success'}
     end
 

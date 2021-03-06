@@ -1,10 +1,10 @@
 export const addSong = song => {
-    debugger
     return { type: "ADD_SONG", song }
 }
 
-export const deleteSong = clientId => {
-    return { type: "DELETE_SONG", clientId }
+export const deleteSong = id => {
+    debugger
+    return { type: "DELETE_SONG", id }
 }
 
 export const resetSongStore = songs => {

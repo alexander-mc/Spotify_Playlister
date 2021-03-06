@@ -1,19 +1,19 @@
 import React from 'react';
 
-const SearchResult = ({match, song, addSong, deleteSearchResults}) => {
+const SearchResult = ({match, addSong, playlistSongs, searchResult, deleteSearchResults}) => {
 
-    const handleClick = () => {
+    const postSong = () => {
 
         const configObj = {
             song: {
-                title: song.name,
-                album_name: song.album.name,
-                artists: song.artists.map( a => a.name),
-                url: song.external_urls.spotify,
-                spotify_id: song.id
+                title: searchResult.name,
+                album_name: searchResult.album.name,
+                artists: searchResult.artists.map( a => a.name),
+                url: searchResult.external_urls.spotify,
+                spotify_id: searchResult.id
             }
         }
-        
+
         fetch(`http://localhost:3001${match.url}`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json; charset=UTF-8' },
@@ -22,9 +22,10 @@ const SearchResult = ({match, song, addSong, deleteSearchResults}) => {
         })
         .then(response => response.json())
         .then( json => {
+
             if (!json.errors) {
                 deleteSearchResults()
-                setTimeout( () => addSong(json), 3000)
+                addSong(json)
             } else {
                 alert(json.errors.join("\n"))
             }
@@ -32,18 +33,25 @@ const SearchResult = ({match, song, addSong, deleteSearchResults}) => {
         })
         .catch(error => console.log('API errors:', error))
 
+    }
 
-        // addSong(song)
+    const handleClick = () => {
+
+        const spotifyIds = playlistSongs.map( s => s.spotify_id )
+        !spotifyIds.includes(searchResult.id) ?
+            postSong() :
+            alert('That song already exists in the playlist')
+
     }
 
     return (
-        <div key={song.id}>
+        <div key={searchResult.id}>
             <div>
                 <button onClick={handleClick}>Add</button>
             </div>
-            <p>Song: <a target="_blank" rel="noopener noreferrer" href={song.external_urls.spotify}>{song.name}</a></p>
-            <p>Album: {song.album.name}</p>
-            <p>Artists: {song.artists.map( a => a.name).join(', ')}</p>
+            <p>Song: <a target="_blank" rel="noopener noreferrer" href={searchResult.external_urls.spotify}>{searchResult.name}</a></p>
+            <p>Album: {searchResult.album.name}</p>
+            <p>Artists: {searchResult.artists.map( a => a.name).join(', ')}</p>
         </div>
     )
 }
