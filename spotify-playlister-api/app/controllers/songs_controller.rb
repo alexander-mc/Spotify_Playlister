@@ -6,18 +6,19 @@ class SongsController < ApplicationController
 
     def create
         playlist = current_playist(params[:playlist_id])
-        binding.pry
-        playlist.songs.create_with(song_params).find_or_create_by(spotify_id: song_params[:spotify_id])
-
-        # song = Song.update_or_create()
-        binding.pry
-        render json: song
+        song = playlist.songs.create_with(song_params).find_or_create_by(spotify_id: song_params[:spotify_id])
+        if song.errors.full_messages.blank?
+            song_hash = song.attributes
+            song_hash[:playlistIds] = song.playlists.map{ | playlist | playlist.id }
+            render json: song_hash
+        else
+            render json: { errors: song.errors.full_messages }
+        end
     end
 
     private
 
     def song_params
-        binding.pry
         params.require(:song).permit(:title, :album_name, :url, :spotify_id, :artists => [])
     end
 

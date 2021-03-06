@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchResult = ({match, song, addSong}) => {
+const SearchResult = ({match, song, addSong, deleteSearchResults}) => {
 
     const handleClick = () => {
 
@@ -22,13 +22,12 @@ const SearchResult = ({match, song, addSong}) => {
         })
         .then(response => response.json())
         .then( json => {
-                debugger            
-        //     if (!json.errors) {
-        //         addPlaylist(json)
-        //         history.push(`${match.url}/${json.id}/songs`)
-        //     } else {
-        //         this.setState({ errors: json.errors })
-        //     }
+            if (!json.errors) {
+                deleteSearchResults()
+                setTimeout( () => addSong(json), 3000)
+            } else {
+                alert(json.errors.join("\n"))
+            }
 
         })
         .catch(error => console.log('API errors:', error))

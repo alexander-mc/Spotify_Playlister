@@ -14,9 +14,7 @@ class PlaylistsController < ApplicationController
                 userId: playlist.user.id
             }
         else
-            render json: {
-                errors: playlist.errors.full_messages
-            }
+            render json: { errors: playlist.errors.full_messages }
         end
         
     end

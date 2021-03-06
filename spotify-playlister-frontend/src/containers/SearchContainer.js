@@ -14,7 +14,7 @@ class SearchContainer extends Component {
     return (
       <div>
         <SearchInput addSearchResults={addSearchResults} deleteSearchResults={deleteSearchResults} addSearchMessage={addSearchMessage}/>
-        <SearchResults match={match} addSong={addSong} songs={searchResults.songs} searchMessage={searchResults.message} />
+        <SearchResults match={match} addSong={addSong} songs={searchResults.songs} searchMessage={searchResults.message} deleteSearchResults={deleteSearchResults} />
       </div>
     )
   }

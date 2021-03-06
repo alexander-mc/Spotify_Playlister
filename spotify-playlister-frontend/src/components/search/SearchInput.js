@@ -34,8 +34,6 @@ class SearchInput extends Component {
               data.tracks.items.length > 0 ?
                 this.props.addSearchResults( data.tracks.items ) :
                 this.props.addSearchMessage( "Sorry, we could not find any songs." )
-            
-              console.log(data)
             },
             (err) => {
               console.error(err);

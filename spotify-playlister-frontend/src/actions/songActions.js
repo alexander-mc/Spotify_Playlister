@@ -1,4 +1,5 @@
 export const addSong = song => {
+    debugger
     return { type: "ADD_SONG", song }
 }
 

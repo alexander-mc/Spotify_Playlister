@@ -51,6 +51,7 @@ function songsReducer(state = [], action) {
     switch (action.type) {
         case "ADD_SONG":
             const song = { title: action.song.title, clientId: uuid() };
+            debugger
             return [...state, song]
 
         case "DELETE_SONG":

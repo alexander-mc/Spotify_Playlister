@@ -27,9 +27,17 @@ class SongsContainer extends Component {
     redirect = () => this.props.history.push(`/users/${this.props.user.id}/playlists`)
     
     playlistSongs = () => {
-        return this.props.songs.filter( song => {
-            return song.playlistIds.find( id => id === parseInt(this.props.match.params.playlistId, 10))
+        const songs = this.props.songs.filter( song => {
+            // debugger
+            if (song.id) {
+                if (song.playlistIds.find( id => id === parseInt(this.props.match.params.playlistId, 10))) {
+                    return true
+                } else {
+                    return false
+                }
+            }
         })
+        return songs
     }
 
     loadPage = () => {
