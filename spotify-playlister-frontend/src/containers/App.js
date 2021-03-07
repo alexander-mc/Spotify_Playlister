@@ -47,9 +47,10 @@ class App extends Component {
   }
 }
 
+export default connect( ({user}) => ({user}), {fetchUser, loginUser, logoutUser} )(App);
+
+// Alternative code:
 // const mapStateToProps = ({user}) => ({user})
 // const mapDispatchToProps = dispatch => ({
 //   loginUser: user => dispatch({ type: "ADD_USER", user }) // or, if importing actions -> loginUser: user => dispatch(loginUser(user))
 // })
-
-export default connect( ({user}) => ({user}), {fetchUser, loginUser, logoutUser} )(App);

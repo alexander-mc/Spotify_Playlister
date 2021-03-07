@@ -6,13 +6,7 @@ import { addSong, updateSong } from '../actions/songActions'
 
 class SongsContainer extends Component {
 
-    componentDidMount() {
-        this.props.deleteSearchResults()
-    }
-
-    handleClick = () => {
-
-    }
+    componentDidMount() { this.props.deleteSearchResults() }
 
     findPlaylist = () => this.props.playlists.find( e => e.id === parseInt(this.props.match.params.playlistId, 10) )
     authPlaylist = () => !!this.findPlaylist() ? this.loadPage() : this.redirect()

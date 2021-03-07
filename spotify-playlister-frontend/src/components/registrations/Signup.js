@@ -46,10 +46,7 @@ class Signup extends Component {
 
     };
 
-    componentDidMount() {
-        // debugger
-        this.props.fetchUser()
-    }
+    componentDidMount() { this.props.fetchUser() }
 
     handleLoading = () => this.props.user.loading ? this.tempPage() : this.authUser();
     authUser = () => this.props.user.isLoggedIn ? this.redirect() : this.loadPage();

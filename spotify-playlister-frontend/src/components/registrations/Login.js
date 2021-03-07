@@ -40,10 +40,7 @@ class Login extends Component {
         .catch(error => console.log('API errors:', error))
     }
     
-    componentDidMount() {
-        // debugger
-        this.props.fetchUser()
-    }
+    componentDidMount() { this.props.fetchUser() }
 
     handleLoading = () => this.props.user.loading ? this.tempPage() : this.authUser();
     authUser = () => this.props.user.isLoggedIn ? this.redirect() : this.loadPage();

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  resources :users, only: [:new, :create] do
-    resources :playlists do # delete unnecessary routes later
-      resources :songs # delete unnecessary routes later
+  resources :users, only: [:create] do
+    resources :playlists, only: [:create, :destroy] do
+      resources :songs, only: [:create, :update]
     end
   end
 

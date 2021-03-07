@@ -20,19 +20,14 @@ class SessionsController < ApplicationController
 
     def destroy
         logout!
-        render json: {
-            isLoggedIn: false
-        }
+        render json: { isLoggedIn: false }
     end
 
     # Gets called in componentDidMount methods
     def is_logged_in?
 
         if logged_in?
-          
-          uniq_songs = current_user.songs.uniq{ |s| s.id }.map do | song |
-            update_song(song)
-          end
+          uniq_songs = current_user.songs.uniq{ |s| s.id }.map { | song | update_song(song) }
 
           render json: {
             user: {

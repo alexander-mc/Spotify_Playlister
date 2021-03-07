@@ -12,9 +12,7 @@ class UsersController < ApplicationController
                 isLoggedIn: true,
             }
         else
-            render json: {
-                errors: user.errors.full_messages
-            }
+            render json: { errors: user.errors.full_messages }
         end
     end
 

@@ -37,22 +37,9 @@ const SearchResult = ({match, addSong, searchResult, deleteSearchResults, songs,
 
     }
 
-    // const handleClick = () => {
-
-    //     postSong();
-
-    //     // const spotifyIds = playlistSongs.map( s => s.spotify_id )
-    //     // !spotifyIds.includes(searchResult.id) ?
-    //     //     postSong() :
-    //     //     alert('That song already exists in the playlist')
-
-    // }
-
     return (
         <div key={searchResult.id}>
-            <div>
-                <button onClick={postSong}>Add</button>
-            </div>
+            <div> <button onClick={postSong}>Add</button> </div>
             <p>Song: <a target="_blank" rel="noopener noreferrer" href={searchResult.external_urls.spotify}>{searchResult.name}</a></p>
             <p>Album: {searchResult.album.name}</p>
             <p>Artists: {searchResult.artists.map( a => a.name).join(', ')}</p>
@@ -61,4 +48,3 @@ const SearchResult = ({match, addSong, searchResult, deleteSearchResults, songs,
 }
 
 export default SearchResult
-

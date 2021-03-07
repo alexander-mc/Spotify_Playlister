@@ -11,15 +11,12 @@ import { deleteSearchResults } from '../actions/searchActions'
 
 class PlaylistsContainer extends Component {
 
-  componentDidMount() {
-    this.props.fetchUser()
-  }
-
+  componentDidMount() { this.props.fetchUser() }
   handleLoading = () => this.props.user.loading ? this.tempPage() : this.authUser()
 
   authUser = () => {
-    // Check user has logged in + :userId matches logged in user id
-    // If :userId does not match logged in user id, force correct user id in url and redirect PlaylistContainer
+    // Checks if user has logged in + :userId matches logged in user id
+    // If :userId does not match logged in user id, logged in user id is reset in url and user is redirected to PlaylistContainer
     const isValidUser = this.props.user.id === parseInt(this.props.match.params.userId, 10)
     return isValidUser ? this.loadPage() : this.redirect()
   }

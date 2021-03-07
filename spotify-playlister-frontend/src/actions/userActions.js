@@ -17,11 +17,9 @@ export const fetchUser = () => {
         .then(json => {
             
             if (json.user.isLoggedIn) {
+                
+                // Reset playlist store (this is necessary when user logs out or during multiple redirects, such as if user manually enters incorrect playlistId url param
                 dispatch(resetPlaylistStore(json.playlists))
-                // First clear playlist store (this is necessary when user logs out or during multiple redirects, such as if user manually enters incorrect playlistId url param
-                // dispatch(resetPlaylistStore(json.playlists))
-                // Then add playlists from the server to the store
-                // for (const playlist of json.playlists) dispatch(addPlaylist(playlist))
                 dispatch(resetSongStore(json.songs))
             }
 

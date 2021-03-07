@@ -4,16 +4,15 @@ class SongsController < ApplicationController
     before_action only: [:create, :update] do
         is_valid_playlist(params[:playlist_id])
     end
+    
     before_action :is_valid_song, only: :update
 
     def create
         song = Song.update_or_create(song_params, params[:playlist_id])
 
-        if song.errors.full_messages.blank?
-            render json: update_song(song)
-        else
-            render json: { errors: song.errors.full_messages }
-        end
+        render json: song.errors.full_messages.blank? ?
+            update_song(song) : 
+            { errors: song.errors.full_messages }
     end
 
     # Updates song's join table (NOTE: this does not delete the song)

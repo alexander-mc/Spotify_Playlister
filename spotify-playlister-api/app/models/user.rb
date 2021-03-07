@@ -8,8 +8,8 @@ class User < ApplicationRecord
               format: { with: /\A[a-zA-Z0-9]*\z/, message: "can only contain letters and numbers" },
               uniqueness: { case_sensitive: false, message: "is already taken" }
     
-    has_secure_password (options = { validations: false })
     # Set hsp validatons to false in order to customize (see custom validations below)
+    has_secure_password (options = { validations: false })
 
     validates :password,
               presence: { message: "was not entered" },

@@ -9,11 +9,7 @@ const Playlists = ({ match, playlists, deletePlaylist }) => {
     </ul>
   )
 
-  return (
-    <div>
-      { playlists.length > 0 ? renderList() : <div>Add a playlist</div> }
-    </div>
-  )
+  return <div> { playlists.length > 0 ? renderList() : <div>Add a playlist</div> } </div>
 
 }
   
