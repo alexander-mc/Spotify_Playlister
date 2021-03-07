@@ -1,5 +1,4 @@
 import { combineReducers } from "redux"
-import { v4 as uuid } from "uuid"; 
 
 const rootReducer = combineReducers({
     user: userReducer,
@@ -48,12 +47,30 @@ function playlistsReducer(state = [], action) {
 }
 
 function songsReducer(state = [], action) {
+
     switch (action.type) {
         case "ADD_SONG":
             return [...state, action.song]
 
+        case "UPDATE_SONG":
+            const index = state.findIndex( s => s.spotify_id === action.song.spotify_id )
+
+            return [
+                ...state.slice(0, index),
+                action.song,
+                ...state.slice(index + 1)
+            ]
+
+            // Alternative codes:
+            // Object.assign({}, song, {playlistIds: action.song.playlistIds}),
+            // OR            
+            // let newState = [
+            //     ...state.slice(0, index),
+            //     { ...song, ...action.song },
+            //     ...state.slice(index + 1)
+            // ]
+
         case "DELETE_SONG":
-            debugger
             return state.filter( song => song.id !== action.id )
 
         case "RESET_SONG_STORE":

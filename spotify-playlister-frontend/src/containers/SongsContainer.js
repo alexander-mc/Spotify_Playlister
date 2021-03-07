@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import SearchContainer from './SearchContainer'
 import Songs from '../components/songs/Songs'
-import { addSong, deleteSong } from '../actions/songActions'
+import { addSong, updateSong } from '../actions/songActions'
 
 class SongsContainer extends Component {
 
@@ -20,14 +20,14 @@ class SongsContainer extends Component {
 
     loadPage = () => {
 
-        const {match, songs, addSong, deleteSong} = this.props
+        const {match, songs, addSong, updateSong} = this.props
         const playlistSongs = songs.filter( song => song.playlistIds.includes(parseInt(match.params.playlistId, 10)))
         
         return (
             <div>
-                <SearchContainer match={match} playlistSongs={playlistSongs} addSong={addSong} />
+                <SearchContainer match={match} addSong={addSong} />
                 <h3>{this.findPlaylist().name}</h3>
-                <Songs playlistSongs={playlistSongs} match={match} deleteSong={deleteSong} />
+                <Songs playlistSongs={playlistSongs} match={match} updateSong={updateSong} />
             </div>
         )
     }
@@ -36,4 +36,4 @@ class SongsContainer extends Component {
 
 };
 
-export default connect( ({songs}) => ({songs} ), { addSong, deleteSong } )(SongsContainer)
+export default connect( ({songs}) => ({songs} ), { addSong, updateSong } )(SongsContainer)

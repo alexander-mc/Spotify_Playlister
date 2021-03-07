@@ -1,26 +1,25 @@
 class SongsController < ApplicationController
+
     before_action :is_valid_user
-    before_action only: [:create, :destroy] do
+    before_action only: [:create, :update] do
         is_valid_playlist(params[:playlist_id])
     end
-    before_action :is_valid_song, only: :destroy
+    before_action :is_valid_song, only: :update
 
     def create
-        playlist = current_playlist(params[:playlist_id])
-        song = playlist.songs.create_with(song_params).find_or_create_by(spotify_id: song_params[:spotify_id])
+        song = Song.update_or_create(song_params, params[:playlist_id])
+
         if song.errors.full_messages.blank?
-            song_hash = song.attributes
-            song_hash[:playlistIds] = song.playlists.map{ | playlist | playlist.id }
-            render json: song_hash
+            render json: update_song(song)
         else
             render json: { errors: song.errors.full_messages }
         end
     end
 
-    def destroy
-        binding.pry
-        current_song.playlist_songs.find_by(playlist_id: params[:playlist_id]).destroy
-        render json: {message: 'Success'}
+    # Updates song's join table (NOTE: this does not delete the song)
+    def update
+        current_song.playlist_songs.find_by(playlist_id: params[:playlist_id]).destroy       
+        render json: update_song(current_song)
     end
 
     private
@@ -30,11 +29,10 @@ class SongsController < ApplicationController
     end
 
     def current_song
-        current_playlist(params[:playlist_id]).songs.find_by(id: params[:id])
+        current_song ||= Song.all.find_by(id: params[:id])
     end
 
     def is_valid_song
-        binding.pry
         render json: {errors: ["That song could not be found"]} if !current_song
         return true
     end

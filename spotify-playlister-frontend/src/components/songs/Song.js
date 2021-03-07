@@ -1,18 +1,28 @@
 import React from 'react';
 
-const Song = ({playlistSong, match, deleteSong}) => {
+const Song = ({playlistSong, match, updateSong}) => {
     
     const handleClick = () => {
-        // deleteSong(song.id);
+
         const configObj = {
-            method: 'DELETE',
+            method: 'PUT',
             headers: {'Content-type': 'application/json; charset=UTF-8'},
             credentials: 'include'
         }
-        debugger
+
         fetch(`http://localhost:3001${match.url}/${playlistSong.id}`, configObj)   
             .then(response => response.json())
-            .then(json => !json.errors ? deleteSong(playlistSong.id) : alert(json.errors.join("\n")))
+            .then(json => {
+                if (!json.errors) {
+                    const { playlistIds } = playlistSong
+                    const index = playlistIds.indexOf(parseInt(match.params.playlistId, 10))
+                    if (index > -1) playlistIds.splice(index, 1)
+                    updateSong(playlistSong)
+
+                } else {
+                    alert(json.errors.join("\n"))
+                } 
+            })
             .catch(error => console.log('API errors:', error))
     }
 

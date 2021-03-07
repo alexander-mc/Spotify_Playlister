@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchResult = ({match, addSong, playlistSongs, searchResult, deleteSearchResults}) => {
+const SearchResult = ({match, addSong, searchResult, deleteSearchResults, songs, updateSong}) => {
 
     const postSong = () => {
 
@@ -24,8 +24,10 @@ const SearchResult = ({match, addSong, playlistSongs, searchResult, deleteSearch
         .then( json => {
 
             if (!json.errors) {
+                const song = songs.find( s => s.spotify_id === json.spotify_id )
+                song ? updateSong(json) : addSong(json)
                 deleteSearchResults()
-                addSong(json)
+
             } else {
                 alert(json.errors.join("\n"))
             }
@@ -35,19 +37,21 @@ const SearchResult = ({match, addSong, playlistSongs, searchResult, deleteSearch
 
     }
 
-    const handleClick = () => {
+    // const handleClick = () => {
 
-        const spotifyIds = playlistSongs.map( s => s.spotify_id )
-        !spotifyIds.includes(searchResult.id) ?
-            postSong() :
-            alert('That song already exists in the playlist')
+    //     postSong();
 
-    }
+    //     // const spotifyIds = playlistSongs.map( s => s.spotify_id )
+    //     // !spotifyIds.includes(searchResult.id) ?
+    //     //     postSong() :
+    //     //     alert('That song already exists in the playlist')
+
+    // }
 
     return (
         <div key={searchResult.id}>
             <div>
-                <button onClick={handleClick}>Add</button>
+                <button onClick={postSong}>Add</button>
             </div>
             <p>Song: <a target="_blank" rel="noopener noreferrer" href={searchResult.external_urls.spotify}>{searchResult.name}</a></p>
             <p>Album: {searchResult.album.name}</p>
