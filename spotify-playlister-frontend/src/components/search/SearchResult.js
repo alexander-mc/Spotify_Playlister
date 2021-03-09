@@ -38,7 +38,7 @@ const SearchResult = ({match, addSong, searchResult, deleteSearchResults, songs,
     }
 
     return (
-        <div key={searchResult.id}>
+        <div>
             <div> <button onClick={postSong}>Add</button> </div>
             <p>Song: <a target="_blank" rel="noopener noreferrer" href={searchResult.external_urls.spotify}>{searchResult.name}</a></p>
             <p>Album: {searchResult.album.name}</p>

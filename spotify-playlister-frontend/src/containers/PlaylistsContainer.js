@@ -13,14 +13,12 @@ class PlaylistsContainer extends Component {
 
   componentDidMount() { this.props.fetchUser() }
   handleLoading = () => this.props.user.loading ? this.tempPage() : this.authUser()
-
   authUser = () => {
     // Checks if user has logged in + :userId matches logged in user id
     // If :userId does not match logged in user id, logged in user id is reset in url and user is redirected to PlaylistContainer
     const isValidUser = this.props.user.id === parseInt(this.props.match.params.userId, 10)
     return isValidUser ? this.loadPage() : this.redirect()
   }
-  
   redirect = () => this.props.history.push('/')
   tempPage = () => <Holding />
 

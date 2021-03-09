@@ -5,7 +5,7 @@ const Playlists = ({ match, playlists, deletePlaylist }) => {
 
   const renderList = () => (
     <ul>
-      {playlists.map(playlist => <Playlist url={match.url} playlist={playlist} deletePlaylist={deletePlaylist} /> )}
+      {playlists.map(playlist => <Playlist key={playlist.id} url={match.url} playlist={playlist} deletePlaylist={deletePlaylist} /> )}
     </ul>
   )
 

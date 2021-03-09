@@ -27,7 +27,7 @@ const Song = ({playlistSong, match, updateSong}) => {
     }
 
     return (
-        <div key={playlistSong.id}>
+        <div>
             <p>Song: <a target="_blank" rel="noopener noreferrer" href={playlistSong.url}>{playlistSong.title}</a></p>
             <p>Album: {playlistSong.album_name}</p>
             <p>Artists: {JSON.parse(playlistSong.artists).join(', ')}</p>

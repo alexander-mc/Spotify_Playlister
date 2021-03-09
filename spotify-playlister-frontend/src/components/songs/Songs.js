@@ -7,7 +7,7 @@ const Songs = ({ playlistSongs, match, updateSong }) => {
 
         // Allows user to add same song to playlist multiple times
         return playlistSong.playlistIds.filter( id => id === parseInt(match.params.playlistId, 10)).map( () =>
-            <Song match={match} playlistSong={playlistSong} updateSong={updateSong} /> 
+            <Song key={playlistSong.id} match={match} playlistSong={playlistSong} updateSong={updateSong} /> 
         )
     })
 

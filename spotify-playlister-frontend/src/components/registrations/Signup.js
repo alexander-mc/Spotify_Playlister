@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Holding from '../Holding';
 
 class Signup extends Component {
 
@@ -39,21 +38,14 @@ class Signup extends Component {
               this.props.loginUser(json)
               this.redirect()
             } else {
-              this.setState({ errors: json.errors })
+              this.setState({ password: '', password_confirmation: '', errors: json.errors })
             }
         })
         .catch(error => console.log('API errors:', error))
 
     };
 
-    componentDidMount() { this.props.fetchUser() }
-
-    handleLoading = () => this.props.user.loading ? this.tempPage() : this.authUser();
-    authUser = () => this.props.user.isLoggedIn ? this.redirect() : this.loadPage();
-    redirect = () => this.props.history.push(`/users/${this.props.user.id}/playlists`);
-    
-    tempPage = () => <Holding />
-    loadPage = () => {
+    render () {
         return (
             <div>
                 <h1>Sign Up</h1>
@@ -90,10 +82,10 @@ class Signup extends Component {
                     { this.state.errors ? this.handleErrors() : null }
                 </div>
             </div>
-        );
+        )
     }
 
-    handleErrors = () => {
+    handleErrors () {
         return (
             <div>
                 <ul>
@@ -105,6 +97,5 @@ class Signup extends Component {
         )
     }
 
-    render () { return <div>{ this.handleLoading() }</div> }
 }
 export default Signup;
