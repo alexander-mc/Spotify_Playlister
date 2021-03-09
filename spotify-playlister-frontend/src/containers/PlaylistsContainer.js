@@ -29,18 +29,18 @@ class PlaylistsContainer extends Component {
       <div>
         <NavBar user={user} logoutUser={logoutUser} />
         <Route 
-          exact path={`${match.url}`}
+          exact path={`${match.url}/:playlistId/songs`}
+          render={ props => (
+            <SongsContainer {...props} user={user} playlists={playlists} deleteSearchResults={deleteSearchResults} /> )}
+        />
+        <Route 
+          path={`${match.url}`}
           render={ (props) => (
             <div>
               <PlaylistInput {...props} user={user} addPlaylist={addPlaylist} />
               <Playlists {...props} playlists={playlists} deletePlaylist={deletePlaylist} />
             </div>
           )}
-        />
-        <Route 
-          path={`${match.url}/:playlistId/songs`}
-          render={ props => (
-            <SongsContainer {...props} user={user} playlists={playlists} deleteSearchResults={deleteSearchResults} /> )}
         />
       </div>
     );

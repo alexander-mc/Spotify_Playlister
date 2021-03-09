@@ -26,7 +26,6 @@ class App extends Component {
               render={props => (
               <HomeContainer {...props} fetchUser={fetchUser} user={user} loginUser={loginUser} /> )}
             />
-            <Route path='*' render={() => <NoMatch /> }/>
           </Switch>
         </Router>
       </div>

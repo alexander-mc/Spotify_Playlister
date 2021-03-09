@@ -20,20 +20,20 @@ class HomeContainer extends Component {
     return (
         <div>
             <h1>Spotify Playlister</h1>
-            <Route
-                exact path={`${match.url}`}
-                render={props => (
-                <Home {...props} fetchUser={fetchUser} user={user} /> )}
-            />
             <Route 
                 exact path='/login'
                 render={props => (
-                <Login {...props} fetchUser={fetchUser} user={user} loginUser={loginUser} /> )}
+                    <Login {...props} fetchUser={fetchUser} user={user} loginUser={loginUser} /> )}
             />
             <Route 
                 exact path='/signup' 
                 render={props => (
-                <Signup {...props} fetchUser={fetchUser} user={user} loginUser={loginUser} /> )}
+                    <Signup {...props} fetchUser={fetchUser} user={user} loginUser={loginUser} /> )}
+            />
+            <Route
+                path={`${match.url}`}
+                render={props => (
+                    <Home {...props} fetchUser={fetchUser} user={user} /> )}
             />
         </div>
     )

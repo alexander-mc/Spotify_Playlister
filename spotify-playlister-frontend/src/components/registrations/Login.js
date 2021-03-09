@@ -31,7 +31,7 @@ class Login extends Component {
         .then( json => {
             if (json.isLoggedIn) {
               this.props.loginUser(json)
-              this.redirect()
+              this.props.history.push(`/users/${this.props.user.id}/playlists`);  
             } else {
               this.setState({ errors: json.errors })
             }
