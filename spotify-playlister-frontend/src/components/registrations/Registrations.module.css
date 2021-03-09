@@ -1,0 +1,20 @@
+.home-container {
+    margin: auto;
+    margin-top: 200px;
+    width: 500px
+}
+
+.title {
+    color: white;
+    text-align: center;
+}
+
+.sign-up-btn {
+    display: block;
+    margin: 0 auto;
+}
+
+.log-in-btn {
+    display: block;
+    margin: 0 auto;
+}

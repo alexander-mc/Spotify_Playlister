@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Holding from '../Holding'
+import styles from './Registrations.module.css';
 
 class Login extends Component {
 
@@ -41,15 +41,16 @@ class Login extends Component {
     }
     
     componentDidMount() { this.props.fetchUser() }
-
+    
     handleLoading = () => this.props.user.loading ? this.tempPage() : this.authUser();
     authUser = () => this.props.user.isLoggedIn ? this.redirect() : this.loadPage();
     redirect = () => this.props.history.push(`/users/${this.props.user.id}/playlists`);
-    
     tempPage = () => <Holding />
+
     loadPage = () => {
         return (
             <div>
+                <h1>SPOTIFY PLAYLISTER</h1>
                 <h1>Log In</h1>
                 <form onSubmit={this.handleSubmit}>
                     <input
@@ -69,9 +70,8 @@ class Login extends Component {
                     <button placeholder="submit" type="submit">
                         Log In
                     </button>
-                    <div>
-                        or <Link to='/signup'>Sign Up</Link>
-                    </div>
+                    <div>or</div>
+                    <button className={styles['sign-up-btn']} onClick={ () => this.props.history.push(`/signup`) }>SIGN UP</button>
                 </form>
                 <div>
                     { this.state.errors ? this.handleErrors() : null }
@@ -92,7 +92,7 @@ class Login extends Component {
         )
     }
 
-    render () { return <div>{ this.handleLoading() }</div> }
+    render() { return <div>{ this.handleLoading() }</div> }
 }
 
 export default Login;

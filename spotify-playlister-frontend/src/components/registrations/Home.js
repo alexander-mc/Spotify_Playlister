@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Holding from '../Holding'
+import styles from './Registrations.module.css';
 
 class Home extends Component {
 
   componentDidMount() { this.props.fetchUser() }
-
+  
   handleLoading = () => this.props.user.loading ? this.tempPage() : this.authUser();
   authUser = () => this.props.user.isLoggedIn ? this.redirect() : this.loadPage();
   redirect = () => this.props.history.push(`/users/${this.props.user.id}/playlists`); // window.location.href = `/users/${user_id}/playlists`
-  
   tempPage = () => <Holding />
+  
   loadPage = () => {
+
     return (
-      <div>
-        <Link to='/login'>Log In</Link>
-        <br></br>
-        <Link to='/signup'>Sign Up</Link>
+      <div className={styles['home-container']}>
+        <h1 className={styles.title} >SPOTIFY PLAYLISTER</h1>
+        <button className={styles['sign-up-btn']} onClick={ () => this.props.history.push(`/signup`) }>SIGN UP</button>
+        <button className={styles['log-in-btn']} onClick={ () => this.props.history.push(`/login`) }>LOG IN</button>
       </div>
     )
   }
 
-  render () { return <div>{ this.handleLoading() }</div> }
+  render() { return <div>{ this.handleLoading() }</div> }
 };
 
 export default Home;
