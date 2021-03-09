@@ -34,7 +34,7 @@ class PlaylistsContainer extends Component {
             <SongsContainer {...props} user={user} playlists={playlists} deleteSearchResults={deleteSearchResults} /> )}
         />
         <Route 
-          path={`${match.url}`}
+          exact path={`${match.url}`}
           render={ (props) => (
             <div>
               <PlaylistInput {...props} user={user} addPlaylist={addPlaylist} />

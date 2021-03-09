@@ -31,7 +31,7 @@ class HomeContainer extends Component {
                     <Signup {...props} fetchUser={fetchUser} user={user} loginUser={loginUser} /> )}
             />
             <Route
-                path={`${match.url}`}
+                exact path={`${match.url}`}
                 render={props => (
                     <Home {...props} fetchUser={fetchUser} user={user} /> )}
             />

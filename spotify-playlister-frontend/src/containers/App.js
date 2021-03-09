@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import HomeContainer from '../containers/HomeContainer'
 import PlaylistsContainer from '../containers/PlaylistsContainer'
-import NoMatch from '../components/NoMatch'
 import { fetchUser, loginUser, logoutUser } from '../actions/userActions'
+// import NoMatch from '../components/NoMatch'
 import './App.css';
 
 class App extends Component {
