@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
             }
         else
             render json: { 
-                errors: ["Sorry, that username and/or password could not be found."]
+                errors: ["That username and/or password could not be found"]
               }
         end
     end

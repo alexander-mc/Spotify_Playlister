@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import styles from './Playlists.module.css';
+import addIcon from '../../assets/images/add-icon.png'
 
 class PlaylistInput extends Component {
 
@@ -32,31 +34,28 @@ class PlaylistInput extends Component {
         })
         .catch(error => console.log('API errors:', error))
     }
+    
+    render() {
+        return (
+            <div className={styles['add-playlists-container']}>
+                <h2 className={styles['add-playlists-txt']} >ADD A PLAYLIST</h2>
+                { this.state.errors ? this.handleErrors() : null }
+                <form className={styles['form-grid']} onSubmit={ this.handleSubmit }>
+                    <input className={styles['playlists-input']} type="text" onChange={ this.handleChange } value={this.state.name} placeholder='Enter a playlist name' />
+                    <input className={styles['add-icon']}  title='Add' type="image" src={addIcon} alt="Add Icon" />
+                </form>
+            </div>
+        );
+    }
 
     handleErrors = () => {
         return (
             <div>
-                <ul>
-                    {this.state.errors.map(error => {
-                        return <li key={error}>{error}</li>
-                    })}
-                </ul>
+                {this.state.errors.map(error => {
+                    return <h5 className={styles['playlist-error-txt']} key={error}>{error}</h5>
+                })}
             </div>
         )
-    }
-
-    render() {
-        return (
-          <div>
-            <form onSubmit={ this.handleSubmit }>
-              <input type="text" onChange={ this.handleChange } value={this.state.name} />
-              <input type="submit" />
-            </form>
-            <div>
-                { this.state.errors ? this.handleErrors() : null }
-            </div>
-          </div>
-        );
     }
 };
 

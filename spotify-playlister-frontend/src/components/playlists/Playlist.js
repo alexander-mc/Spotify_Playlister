@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from './Playlists.module.css';
+import deleteIcon from '../../assets/images/delete-icon.png'
 
 const Playlist = ({url, playlist, deletePlaylist}) => {
     
@@ -17,9 +19,11 @@ const Playlist = ({url, playlist, deletePlaylist}) => {
     }
 
     return (
-        <li key={playlist.id}>
-            <Link to={`${url}/${playlist.id}/songs`}>{playlist.name}</Link>
-            <button onClick={handleClick} > X </button>
+        <li key={playlist.id} >
+            <div className={styles['list-grid']} >
+                <Link className={styles.links} to={`${url}/${playlist.id}/songs`}>{playlist.name}</Link>
+                <img className={styles['delete-icon']} title='Delete' src={deleteIcon} onClick={handleClick} alt='Delete icon' />
+            </div>
         </li>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import styles from './NavBar.module.css';
 
 const NavBar = ({user, logoutUser}) => {
 
@@ -15,14 +16,16 @@ const NavBar = ({user, logoutUser}) => {
     }
 
     return (
-        <div style={{ borderBottom: '2px solid black', paddingBottom: '10px', marginBottom: '12px' }}>
-            <span style={{ textTransform: 'uppercase', marginRight: '10px'}}>
-                Welcome {user.username}
-            </span>
-            <NavLink exact to={`/users/${user.id}/playlists`} style={{ marginRight: '10px' }} activeClassName="nav-active" >
-                MAIN
-            </NavLink>
-            <button onClick={handleClickLogout}>LOG OUT</button>
+        <div>
+            <div className={styles.nav} >
+                <h3 className={styles['welcome-txt']}>  WELCOME {user.username} </h3>
+                <h3 > <NavLink className={styles['main-txt']} exact to={`/users/${user.id}/playlists`} >
+                    MAIN
+                </NavLink>
+                </h3>
+                <button className={styles['log-out-btn']} onClick={handleClickLogout}>LOG OUT</button>
+            </div>
+            <hr></hr>
         </div>
     )
 }

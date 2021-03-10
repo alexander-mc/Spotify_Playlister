@@ -1,0 +1,51 @@
+.search-container {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 65px;
+}
+
+.find-song-txt {
+    margin: 0 auto;
+    margin-bottom: 17px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 412px 35px 35px;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input {
+    height: 30px;
+    width: 385px;
+    font-size: 19px;
+    text-align: center;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 0;
+    margin: 0 auto;
+}
+
+.search-input:focus {
+    outline: none;
+    background: hsl(0, 0%, 95%);
+}
+
+.search-icon, .delete-results-icon {
+    width: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.search-icon:hover, .delete-results-icon:hover {
+    filter: brightness(15) sepia(1) saturate(2000%) hue-rotate(165deg);
+}
+
+.search-icon:focus, .delete-results-icon:focus {
+    outline: none;
+}
+
+.search-icon:active, .delete-results-icon:active {
+    transform: scale(.92);
+  }

@@ -20,8 +20,7 @@ class SongsContainer extends Component {
         return (
             <div>
                 <SearchContainer match={match} addSong={addSong} />
-                <h3>{this.findPlaylist().name}</h3>
-                <Songs playlistSongs={playlistSongs} match={match} updateSong={updateSong} />
+                <Songs playlistName={this.findPlaylist().name} playlistSongs={playlistSongs} match={match} updateSong={updateSong} />
             </div>
         )
     }

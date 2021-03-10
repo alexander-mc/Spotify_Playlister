@@ -4,17 +4,89 @@
     width: 500px
 }
 
-.title {
-    color: white;
+.registration-container {
+    margin: auto;
+    margin-top: 125px;
+    width: 275px;
+}
+
+.registration-border {
+    border: 1px solid hsl(192, 100%, 64%);
+    padding-bottom: 20px;
+    border-radius: 30px;
+}
+
+.registration-btn {
+    display: block;
+    margin: 10px auto;
+    width: 220px;
+    padding: 5px 0px 5px 0;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.4s;
+    background-color: rgba(240, 240, 240, 0);
+
+    border-color: hsl(192, 100%, 64%);
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 1px;
+
+    font-family: sans-serif;
+    font-size: 15px;
+    color: hsl(192, 100%, 64%);
+    letter-spacing: 1.5px;
+}
+
+.registration-btn:active {
+    transform: scale(.98);
+}
+
+.registration-btn:hover {
+    background-color: hsl(192, 75%, 40%);
+    color: rgb(238, 237, 237);
+}
+
+.form-header {
+    margin: 10px auto
+}
+
+.input-field {
+    display: block;
+    margin: 10px auto;
+    height: 25px;
+    width: 216px;
+    font-size: 15px;
+    text-align: center;
+
+    border-radius: 0px;
+    border: none;
+}
+
+.input-field:focus {
+    background: hsl(0, 0%, 95%);
+    outline: none;
+}
+
+.or-txt {
+    margin: 7px 0 -3px 0;
+}
+
+.registration-errors-container,
+.sign-up-errors-container {
+    font-family: sans-serif;
+    font-size: 15px;
+    margin: 0px auto;
+    margin-top: -12px;
+    margin-bottom: 16px;
+    width: 250px;
+    padding: 5px 10px;
+    background: hsl(64, 100%, 72%);
+    width: 220px;
     text-align: center;
 }
 
-.sign-up-btn {
-    display: block;
-    margin: 0 auto;
-}
-
-.log-in-btn {
-    display: block;
-    margin: 0 auto;
+.sign-up-errors-ul {
+    text-align: left;
+    padding: 0 0 0 18px;
+    margin: 10px auto;
 }

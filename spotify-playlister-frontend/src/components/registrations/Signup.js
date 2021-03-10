@@ -55,39 +55,43 @@ class Signup extends Component {
 
     loadPage = () => {
         return (
-            <div>
-                <h1>SPOTIFY PLAYLISTER</h1>
-                <h1>Sign Up</h1>
-                    <form onSubmit={this.handleSubmit}>
-                    <input
-                        placeholder="username"
-                        type="text"
-                        name="username"
-                        value={this.state.username}
-                        onChange={this.handleChange}
-                    />
-                    <input 
-                        placeholder="password"
-                        type="password"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        placeholder="password confirmation"
-                        type="password"
-                        name="password_confirmation"
-                        value={this.state.password_confirmation}
-                        onChange={this.handleChange}
-                    />
-                    <button placeholder="submit" type="submit">
-                        Sign Up
-                    </button>
-                    <div>or</div>
-                    <button className={styles['log-in-btn']} onClick={ () => this.props.history.push(`/login`) }>LOG IN</button>
-                </form>
-                <div>
+            <div className={styles['registration-container']}>
+                <div className={styles['registration-border']}>
+                    <h1>SPOTIFY PLAYLISTER</h1>
                     { this.state.errors ? this.handleErrors() : null }
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            className={styles['input-field']}
+                            placeholder="USERNAME"
+                            type="text"
+                            name="username"
+                            value={this.state.username}
+                            onChange={this.handleChange}
+                        />
+                        <input 
+                            className={styles['input-field']}
+                            placeholder="PASSWORD"
+                            type="password"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.handleChange}
+                        />
+                        <input
+                            className={styles['input-field']}
+                            placeholder="RE-ENTER PASSWORD"
+                            type="password"
+                            name="password_confirmation"
+                            value={this.state.password_confirmation}
+                            onChange={this.handleChange}
+                        />
+                        <button className={styles['registration-btn']} placeholder="submit" type="submit">
+                            SIGN UP
+                        </button>
+                    </form>
+                    <div>
+                        <h4 className={styles['or-txt']}>OR</h4>
+                        <button className={styles['registration-btn']} onClick={ () => this.props.history.push(`/login`) }>LOG IN</button>
+                    </div>
                 </div>
             </div>
         );
@@ -95,8 +99,8 @@ class Signup extends Component {
 
     handleErrors = () => {
         return (
-            <div>
-                <ul>
+            <div className={styles['sign-up-errors-container']}>
+                <ul className={styles['sign-up-errors-ul']}>
                     {this.state.errors.map(error => {
                         return <li key={error}>{error}</li>
                     })}

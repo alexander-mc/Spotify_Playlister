@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Search.module.css';
 
 const SearchResult = ({match, addSong, searchResult, deleteSearchResults, songs, updateSong}) => {
 

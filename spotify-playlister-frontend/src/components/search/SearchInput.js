@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
+import styles from './Search.module.css'
+import searchIcon from '../../assets/images/search-icon.png'
+import deleteResultsIcon from '../../assets/images/delete-results-icon.png'
+import { deleteSearchResults } from '../../actions/searchActions';
 
 class SearchInput extends Component {
 
@@ -52,11 +56,14 @@ class SearchInput extends Component {
 
     render() {
         return (
-            <form onSubmit={ this.handleSubmit }>
-                <input type="text" onChange={ this.handleChange } value={this.state.query} />
-                <input type="submit" />
-                <button onClick={this.props.deleteSearchResults}>Clear</button>
-            </form>
+            <div className={styles['search-container']} >
+                <h2 className={styles['find-song-txt']} >SEARCH FOR A SONG</h2>
+                <form className={styles['form-grid']} onSubmit={ this.handleSubmit }>
+                    <input className={styles['search-input']} type="text" onChange={ this.handleChange } value={this.state.query} placeholder='Enter the name of a song, artist, or album' />
+                    <input className={styles['search-icon']} title='Search' type="image" src={searchIcon} alt='Submit query' />
+                    <img className={styles['delete-results-icon']} title='Clear all' onClick={this.props.deleteSearchResults} src={deleteResultsIcon} alt='Delete sesarch results' />
+                </form>
+            </div>
         );
     }
 }

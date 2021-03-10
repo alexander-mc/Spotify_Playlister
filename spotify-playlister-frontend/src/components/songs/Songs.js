@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
 import Song from './Song'
+import styles from './Songs.module.css'
 
-const Songs = ({ playlistSongs, match, updateSong }) => {
+const Songs = ({ playlistName, playlistSongs, match, updateSong }) => {
     
     const renderList = () => playlistSongs.map( playlistSong => {
 
@@ -11,7 +12,12 @@ const Songs = ({ playlistSongs, match, updateSong }) => {
         )
     })
 
-    return <div> { playlistSongs.length > 0 ? <div>{renderList()}</div> : <div>Add a song</div> } </div>
+    return (
+        <div className={styles['songs-container']}>
+            <h2 className={styles['songs-header']} >{playlistName}</h2>
+            { playlistSongs.length > 0 ? <div>{renderList()}</div> : <h5 className={styles['no-songs-txt']}>There are no songs</h5> }
+        </div>
+    )
   
   }
     

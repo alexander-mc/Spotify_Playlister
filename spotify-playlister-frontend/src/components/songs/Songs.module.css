@@ -1,0 +1,23 @@
+.songs-container {
+    text-align: center;
+    width: 340px;
+    margin: 65px auto 0px auto;
+
+    border: 1px solid hsl(0, 0%, 55%);
+    border-radius: 35px;
+    width: 415px;
+    padding: 15px 15px 10px 15px;
+}
+
+.songs-header {
+    text-transform: uppercase;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.no-songs-txt {
+    margin: 0 0 14px 0;
+    text-align: center;
+    text-decoration: none;
+    color: hsl(192, 100%, 64%);
+}

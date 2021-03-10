@@ -16,8 +16,8 @@ class Home extends Component {
     return (
       <div className={styles['home-container']}>
         <h1 className={styles.title} >SPOTIFY PLAYLISTER</h1>
-        <button className={styles['sign-up-btn']} onClick={ () => this.props.history.push(`/signup`) }>SIGN UP</button>
-        <button className={styles['log-in-btn']} onClick={ () => this.props.history.push(`/login`) }>LOG IN</button>
+        <button className={styles['registration-btn']} onClick={ () => this.props.history.push(`/signup`) }>SIGN UP</button>
+        <button className={styles['registration-btn']} onClick={ () => this.props.history.push(`/login`) }>LOG IN</button>
       </div>
     )
   }
