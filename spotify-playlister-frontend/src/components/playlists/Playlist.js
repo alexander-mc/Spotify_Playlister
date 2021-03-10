@@ -21,7 +21,7 @@ const Playlist = ({url, playlist, deletePlaylist}) => {
     return (
         <li key={playlist.id} >
             <div className={styles['list-grid']} >
-                <Link className={styles.links} to={`${url}/${playlist.id}/songs`}>{playlist.name}</Link>
+                <Link className={styles['playlist-link']} to={`${url}/${playlist.id}/songs`}>{playlist.name}</Link>
                 <img className={styles['delete-icon']} title='Delete' src={deleteIcon} onClick={handleClick} alt='Delete icon' />
             </div>
         </li>

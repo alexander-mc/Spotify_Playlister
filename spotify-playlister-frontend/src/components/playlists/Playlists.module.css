@@ -67,12 +67,12 @@
 }
 
 /* Link element */
-.links, .no-playlists-txt {
+.playlist-link, .no-playlists-txt {
     text-decoration: none;
     color: hsl(192, 100%, 64%);
 }
 
-.links:hover {
+.playlist-link:hover {
     color: rgb(238, 237, 237);
 }
 

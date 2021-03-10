@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Search.module.css';
-
+import addIcon from '../../assets/images/add-icon.png'
 const SearchResult = ({match, addSong, searchResult, deleteSearchResults, songs, updateSong}) => {
 
     const postSong = () => {
@@ -39,11 +39,13 @@ const SearchResult = ({match, addSong, searchResult, deleteSearchResults, songs,
     }
 
     return (
-        <div key={searchResult.id}>
-            <div> <button onClick={postSong}>Add</button> </div>
-            <p>Song: <a target="_blank" rel="noopener noreferrer" href={searchResult.external_urls.spotify}>{searchResult.name}</a></p>
-            <p>Album: {searchResult.album.name}</p>
-            <p>Artists: {searchResult.artists.map( a => a.name).join(', ')}</p>
+        <div className={styles['list-grid']} key={searchResult.id}>
+            <img className={styles['add-icon']} src={addIcon} alt={'Add song'} onClick={postSong} />
+            <div className={styles['song-info-container']} >
+                <p><span className={styles['song-info-title']}>Song:</span> <a className={styles['song-link']} target="_blank" rel="noopener noreferrer" href={searchResult.external_urls.spotify}>{searchResult.name}</a></p>
+                <p><span className={styles['song-info-title']}>Album:</span> {searchResult.album.name}</p>
+                <p><span className={styles['song-info-title']}>Artists:</span> {searchResult.artists.map( a => a.name).join(', ')}</p>
+            </div>
         </div>
     )
 }

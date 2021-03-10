@@ -54,6 +54,13 @@ li, h5 {
   text-align: left;
 }
 
+/* Song result list item */
+p {
+  font-family: title;
+  font-size: 15px;
+  color: hsl(198, 74%, 95%);
+  margin: 0px 0 7px 0;
+}
 
 @font-face {
   font-family: 'title';
