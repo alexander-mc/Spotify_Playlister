@@ -5,7 +5,6 @@ import styles from './Songs.module.css'
 const Songs = ({ playlistName, playlistSongs, match, updateSong }) => {
     
     const renderList = () => playlistSongs.map( playlistSong => {
-
         // Allows user to add same song to playlist multiple times
         return playlistSong.playlistIds.filter( id => id === parseInt(match.params.playlistId, 10)).map( () =>
             <Song match={match} playlistSong={playlistSong} updateSong={updateSong} /> 

@@ -29,11 +29,13 @@ const Song = ({playlistSong, match, updateSong}) => {
     }
 
     return (
-        <div key={playlistSong.id}>
-            <p>Song: <a target="_blank" rel="noopener noreferrer" href={playlistSong.url}>{playlistSong.title}</a></p>
-            <p>Album: {playlistSong.album_name}</p>
-            <p>Artist(s): {JSON.parse(playlistSong.artists).join(', ')}</p>
-            <button onClick={handleClick} > X </button>
+        <div className={styles['list-grid']} key={playlistSong.id}>
+            <div className={styles['song-info-container']} >
+                <p><span className={styles['song-info-title']}>Song:</span> <a className={styles['song-link']} target="_blank" rel="noopener noreferrer" href={playlistSong.url}>{playlistSong.title}</a></p>
+                <p><span className={styles['song-info-title']}>Album:</span> {playlistSong.album_name}</p>
+                <p><span className={styles['song-info-title']}>Artist(s):</span> {JSON.parse(playlistSong.artists).join(', ')}</p>
+            </div>
+            <img className={styles['delete-icon']} title='Delete' src={deleteIcon} onClick={handleClick} alt='Delete icon' />
         </div>
     );
   }

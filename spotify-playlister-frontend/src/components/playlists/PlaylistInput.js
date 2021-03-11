@@ -42,7 +42,7 @@ class PlaylistInput extends Component {
                 { this.state.errors ? this.handleErrors() : null }
                 <form className={styles['form-grid']} onSubmit={ this.handleSubmit }>
                     <input className={styles['playlists-input']} type="text" onChange={ this.handleChange } value={this.state.name} placeholder='Enter a playlist name' />
-                    <input className={styles['add-icon']}  title='Add' type="image" src={addIcon} alt="Add Icon" />
+                    <input className={styles['add-icon']}  title='Add playlist' type="image" src={addIcon} alt="Add Icon" />
                 </form>
             </div>
         );

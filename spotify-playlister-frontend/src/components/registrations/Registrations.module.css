@@ -71,14 +71,12 @@
     margin: 7px 0 -3px 0;
 }
 
-.registration-errors-container,
-.sign-up-errors-container {
+.registration-errors-container {
     font-family: sans-serif;
     font-size: 15px;
     margin: 0px auto;
     margin-top: -12px;
     margin-bottom: 16px;
-    width: 250px;
     padding: 5px 10px;
     background: hsl(64, 100%, 72%);
     width: 220px;
@@ -87,6 +85,13 @@
 
 .sign-up-errors-ul {
     text-align: left;
-    padding: 0 0 0 18px;
-    margin: 10px auto;
+    padding: 0 0 0 17px;
+    margin: 3px auto;
+}
+
+.sign-up-errors-txt {
+    font-family: sans-serif;
+    font-size: 15px;
+    color: black;
+    margin-bottom: 1px;
 }

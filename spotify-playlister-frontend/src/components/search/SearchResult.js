@@ -40,7 +40,7 @@ const SearchResult = ({match, addSong, searchResult, deleteSearchResults, songs,
 
     return (
         <div className={styles['list-grid']} key={searchResult.id}>
-            <img className={styles['add-icon']} src={addIcon} alt={'Add song'} onClick={postSong} />
+            <img className={styles['add-icon']} src={addIcon} title='Add to playlist' alt={'Add song'} onClick={postSong} />
             <div className={styles['song-info-container']} >
                 <p><span className={styles['song-info-title']}>Song:</span> <a className={styles['song-link']} target="_blank" rel="noopener noreferrer" href={searchResult.external_urls.spotify}>{searchResult.name}</a></p>
                 <p><span className={styles['song-info-title']}>Album:</span> {searchResult.album.name}</p>

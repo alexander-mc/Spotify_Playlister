@@ -1,11 +1,10 @@
 .songs-container {
     text-align: center;
-    width: 340px;
-    margin: 65px auto 0px auto;
+    width: 525px;
+    margin: 30px auto 0px auto;
 
     border: 1px solid hsl(0, 0%, 55%);
     border-radius: 35px;
-    width: 525px;
     padding: 15px 15px 10px 15px;
 }
 
@@ -20,4 +19,49 @@
     text-align: center;
     text-decoration: none;
     color: hsl(192, 100%, 64%);
+}
+
+.list-grid {
+    display: grid;
+    text-transform: uppercase;
+    grid-template-columns: auto 85px;
+    margin: 15px 0 12px 0;
+    align-items: center;
+}
+
+.delete-icon {
+    width: 21px;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin: -14px 0 0 36px;
+}
+
+.delete-icon:hover {
+    filter: brightness(15) sepia(1) saturate(2000%) hue-rotate(165deg);
+}
+
+.delete-icon:focus {
+    outline: none;
+}
+
+.delete-icon:active {
+    transform: scale(.92);
+  }
+
+.song-info-container {
+    text-align: left;
+    margin-left: 22px;
+}
+
+.song-info-title {
+    color: hsl(192, 100%, 64%);
+}
+
+.song-link {
+    color: hsl(198, 74%, 95%);
+    text-decoration: none;
+}
+
+.song-link:hover {
+    color: hsl(54, 92%, 77%);
 }

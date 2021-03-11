@@ -99,10 +99,10 @@ class Signup extends Component {
 
     handleErrors = () => {
         return (
-            <div className={styles['sign-up-errors-container']}>
+            <div className={styles['registration-errors-container']}>
                 <ul className={styles['sign-up-errors-ul']}>
                     {this.state.errors.map(error => {
-                        return <li key={error}>{error}</li>
+                        return <li className={styles['sign-up-errors-txt']} key={error}>{error}</li>
                     })}
                 </ul>
             </div>

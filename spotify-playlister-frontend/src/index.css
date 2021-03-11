@@ -46,6 +46,10 @@ h4 {
   color: hsl(198, 74%, 95%);
 }
 
+ul {
+    margin: 0 auto;
+}
+
 /* Playlists list */
 li, h5 {
   font-family: title;

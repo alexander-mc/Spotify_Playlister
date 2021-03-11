@@ -5,7 +5,7 @@ import styles from './Playlists.module.css';
 const Playlists = ({ match, playlists, deletePlaylist }) => {
 
   const renderList = () => (
-    <ul className={styles['playlists-list']} >
+    <ul>
       { playlists.map(playlist => <Playlist url={match.url} playlist={playlist} deletePlaylist={deletePlaylist } /> )}
     </ul>
   )
