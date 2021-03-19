@@ -3,7 +3,6 @@ import SpotifyWebApi from 'spotify-web-api-js';
 import styles from './Search.module.css'
 import searchIcon from '../../assets/images/search-icon.png'
 import deleteResultsIcon from '../../assets/images/delete-results-icon.png'
-import { deleteSearchResults } from '../../actions/searchActions';
 
 class SearchInput extends Component {
 
@@ -29,15 +28,15 @@ class SearchInput extends Component {
           
           // Access Spotify API via Spotify Web API JS wrapper
           // For more info: https://github.com/JMPerez/spotify-web-api-js
-          const spotify = new SpotifyWebApi();
           const token = body.access_token;
+          const spotify = new SpotifyWebApi();
           
           spotify.setAccessToken(token)
           spotify.searchTracks(query, { limit: 3 }).then(
             (data) => {
               data.tracks.items.length > 0 ?
                 this.props.addSearchResults( data.tracks.items ) :
-                this.props.addSearchMessage( "Sorry, we could not find any songs." )
+                this.props.addSearchMessage( "No songs could be found" )
             },
             (err) => {
               console.error(err);

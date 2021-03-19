@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Spotify Playlister
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple app with a REST API that allows users to find songs using Spotify's Search API and then group them as in-app playlists. The frontend was built with Javascript's React and Redux libraries. The backend runs on Ruby on Rails.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
++ Retrieve information about a song using Spotify's Search API
++ Create in-app playlists to organize songs
++ Securely sign up / log in
 
-### `yarn start`
+## Preview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![Welcome Screen](/public/screenshots/01_Welcome.png)
+![Sign Up Screen](/public/screenshots/02_Sign_Up.png)
+![Playlists Screen](/public/screenshots/03_Playlists.png)
+![Search Screen](/public/screenshots/04_Search.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Configuration
 
-### `yarn test`
+1. Register a Spotify application and obtain a client ID and client secret. Follow this guide from Spotify for information on how to do this: https://developer.spotify.com/documentation/general/guides/app-settings.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Create a file titled '.env' in the spotify-playlister-frontend directory
 
-### `yarn build`
+3. In the '.env' file, include the following (replace the 'X's with your Spotify client ID and client secret from Step 1):
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+REACT_APP_CLIENT_ID=XXXXXXXXXXXXXXXXXXXXX
+REACT_APP_CLIENT_SECRET= XXXXXXXXXXXXXXXX
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. While in the spotify-playlister-api directory, run 'bundle install' to install the necessary Ruby gems and 'rails s' to launch a server
 
-### `yarn eject`
+5. Lastly, jump into the spotify-playlister-frontend directory and run 'npm start' to view the app in the development environment
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contributing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Bug reports and pull requests are welcome on GitHub at https://github.com/alexander-mc/spotify-stats. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.

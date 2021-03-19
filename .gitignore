@@ -39,3 +39,4 @@ yarn-debug.log*
 /spotify-playlister-frontend/.env
 /NOTES.md
 *.env
+1_IMPORTANT/

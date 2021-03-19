@@ -90,7 +90,7 @@ function searchReducer(state = { songs: [], message: '' }, action) {
             return { songs: [], message: '' }
 
         case "ADD_SEARCH_MESSAGE":
-            return { ...state, message: action.message }
+            return { songs: [], message: action.message }
 
         default:
             return state

@@ -66,6 +66,13 @@
     margin-bottom: 15px;
 }
 
+.no-results-txt {
+    margin: 0 0 14px 0;
+    text-align: center;
+    text-decoration: none;
+    color: hsl(192, 100%, 64%);
+}
+
 .list-grid {
     display: grid;
     text-transform: uppercase;

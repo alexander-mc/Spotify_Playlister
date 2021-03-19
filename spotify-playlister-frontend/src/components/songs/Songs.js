@@ -14,7 +14,7 @@ const Songs = ({ playlistName, playlistSongs, match, updateSong }) => {
     return (
         <div className={styles['songs-container']}>
             <h2 className={styles['songs-header']} >{playlistName}</h2>
-            { playlistSongs.length > 0 ? <div>{renderList()}</div> : <h5 className={styles['no-songs-txt']}>There are no songs</h5> }
+            { playlistSongs.length > 0 ? <div>{renderList()}</div> : <h5 className={styles['no-songs-txt']}>This playlist is empty</h5> }
         </div>
     )
   
