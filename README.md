@@ -2,16 +2,16 @@
 
 A simple app with a REST API that allows users to find songs using Spotify's Search API and then group them as in-app playlists. The frontend was built with JavaScript's React and Redux libraries. The backend runs on Ruby on Rails.
 
+## Links
+
++ [Spotify Playlister](https://spotifyplaylisterapp.herokuapp.com/) - Play with the app! Note that this app works best on Chrome. Also, because this app is deployed on Heroku, it may take a minute to load. If it takes longer than this, you may need to refresh your browser.
++ [Live Demo](https://youtu.be/nvTEAAqh5Pg) - Watch me demo the app
+
 ## Features
 
 + Retrieve information about a song using Spotify's Search API
 + Create in-app playlists to organize songs
 + Securely sign up / log in
-
-## Links
-
-+ [Spotify Playlister](https://spotifyplaylisterapp.herokuapp.com/) - Play with the app! Note that this app works best on Chrome. Also, because this app is deployed on Heroku, it may take a minute to load. If it takes longer than this, you may need to refresh your browser.
-+ [Live Demo](https://youtu.be/nvTEAAqh5Pg) - Watch me demo the app
 
 ## Preview
 
