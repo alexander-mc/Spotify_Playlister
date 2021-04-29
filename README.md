@@ -10,10 +10,10 @@ A simple app with a REST API that allows users to find songs using Spotify's Sea
 
 ## Preview
 
-![Welcome Screen](/public/screenshots/01_Welcome.png)
-![Sign Up Screen](/public/screenshots/02_Sign_Up.png)
-![Playlists Screen](/public/screenshots/03_Playlists.png)
-![Search Screen](/public/screenshots/04_Search.png)
+![Welcome Screen](/spotify-playlister-frontend/public/screenshots/01_Welcome.png)
+![Sign Up Screen](/spotify-playlister-frontend/public/screenshots/02_Sign_Up.png)
+![Playlists Screen](/spotify-playlister-frontend/public/screenshots/03_Playlists.png)
+![Search Screen](/spotify-playlister-frontend/public/screenshots/04_Search.png)
 
 ## Configuration
 
