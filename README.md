@@ -5,7 +5,7 @@ A simple app with a REST API that allows users to find songs using Spotify's Sea
 ## Links
 
 + [Spotify Playlister](https://spotifyplaylisterapp.herokuapp.com/) - Play with the app! Note that this app works best on Chrome. Also, because this app is deployed on Heroku, it may take a minute to load. If it takes longer than this, you may need to refresh your browser.
-+ [Demo](https://youtu.be/nvTEAAqh5Pg) - Watch me demo the app.
++ [Demo](https://youtu.be/nvTEAAqh5Pg) - Watch a demo of the app.
 
 ## Features
 
