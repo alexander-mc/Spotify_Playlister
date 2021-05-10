@@ -13,7 +13,7 @@ A simple app with a REST API that allows users to find songs using Spotify's Sea
 + Create in-app playlists to organize songs
 + Securely sign up / log in
 
-## Preview screenshots
+## Preview
 
 ![Welcome Screen](spotify-playlister-frontend/public/screenshots/1_Welcome.png)
 ![Sign Up Screen](spotify-playlister-frontend/public/screenshots/2_Sign_Up.png)
